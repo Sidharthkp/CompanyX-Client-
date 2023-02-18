@@ -6,15 +6,31 @@ import { toast, ToastContainer } from 'react-toastify'
 
 const Login = () => {
     const navigate = useNavigate()
+    const [values, setValues] = useState({ email: "", password: "" })
 
-    const [values, setValues] = useState({
-        email: "",
-        password: ""
+    const generateError = (err) => toast.error(err, {
+        position: "bottom-right",
     })
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        navigate("/")
+        try {
+            const { data } = await axios.post("http://localhost:4111/login", {
+                ...values,
+            });
+
+            if (data) {
+                if (data.errors) {
+                    const { email, password } = data.errors;
+                    if (email) generateError(email);
+                    else if (password) generateError(password);
+                } else {
+                    navigate("/")
+                }
+            }
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     return (
@@ -60,7 +76,7 @@ const Login = () => {
                                     autoComplete="current-password"
                                     className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Password"
-                                    onChange={(e) => setValues({ ...values, [e.target.password]: e.target.value })}
+                                    onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
                                 />
                             </div>
                         </div>
