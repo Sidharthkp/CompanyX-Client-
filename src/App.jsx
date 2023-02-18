@@ -1,11 +1,18 @@
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Login from './pages/authentication/login'
+import Register from './pages/authentication/Register'
+import Secret from './pages/authentication/secret'
 
 const App = () => {
 
   return (
-    <div className="App">
-      
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path='/login' element={<Login />}></Route>
+        <Route exact path='/register' element={<Register />}></Route>
+        <Route exact path='/' element={<Secret />}></Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
