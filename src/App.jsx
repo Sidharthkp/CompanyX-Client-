@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './pages/authentication/Login'
 import Register from './pages/authentication/Register'
 import Secret from './pages/authentication/Secret'
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
