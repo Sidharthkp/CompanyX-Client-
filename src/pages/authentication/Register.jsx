@@ -1,11 +1,11 @@
 import { LockClosedIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 
 const Register = () => {
-
+    const navigate = useNavigate()
     const [values, setValues] = useState({ email: "", password: "" })
 
     const generateError = (err) => toast.error(err, {
@@ -25,7 +25,7 @@ const Register = () => {
                     if (email) generateError(email);
                     else if (password) generateError(password);
                 } else {
-
+                    navigate("/")
                 }
             }
         } catch (err) {
@@ -109,7 +109,7 @@ const Register = () => {
                                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                                     <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
                                 </span>
-                                Sign in
+                                Sign up
                             </button>
                         </div>
                         <div className='flex flex-row'>
