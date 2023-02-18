@@ -1,10 +1,11 @@
 import { LockClosedIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react';
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify'
 
 const Login = () => {
+    const navigate = useNavigate()
 
     const [values, setValues] = useState({
         email: "",
@@ -13,6 +14,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        navigate("/")
     }
 
     return (
@@ -42,7 +44,6 @@ const Login = () => {
                                     name="email"
                                     type="email"
                                     autoComplete="email"
-                                    required
                                     className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Email address"
                                     onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
@@ -57,7 +58,6 @@ const Login = () => {
                                     name="password"
                                     type="password"
                                     autoComplete="current-password"
-                                    required
                                     className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Password"
                                     onChange={(e) => setValues({ ...values, [e.target.password]: e.target.value })}

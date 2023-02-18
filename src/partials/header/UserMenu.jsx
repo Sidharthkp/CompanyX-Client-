@@ -1,15 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Transition from '../../utils/Transition';
 
 import UserAvatar from '../../images/user-avatar-32.png';
 
 function UserMenu() {
-
+  const navigate = useNavigate()
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
+
+  const logout = () => {
+    setDropdownOpen(!dropdownOpen)
+    navigate("/register")
+  }
 
   // close on click outside
   useEffect(() => {
@@ -42,7 +47,7 @@ function UserMenu() {
       >
         <img className="w-8 h-8 rounded-full" src={UserAvatar} width="32" height="32" alt="User" />
         <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">Acme Inc.</span>
+          <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">Admin</span>
           <svg className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">
             <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
           </svg>
@@ -65,27 +70,25 @@ function UserMenu() {
           onBlur={() => setDropdownOpen(false)}
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
-            <div className="font-medium text-slate-800">Acme Inc.</div>
+            <div className="font-medium text-slate-800">CompanyX</div>
             <div className="text-xs text-slate-500 italic">Administrator</div>
           </div>
           <ul>
             <li>
-              <Link
+              <button
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 Settings
-              </Link>
+              </button>
             </li>
             <li>
-              <Link
+              <button
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={logout}
               >
                 Sign Out
-              </Link>
+              </button>
             </li>
           </ul>
         </div>
