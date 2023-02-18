@@ -3,9 +3,9 @@ import Login from './pages/authentication/Login'
 import Register from './pages/authentication/Register'
 import Secret from './pages/Secret'
 import 'react-toastify/dist/ReactToastify.css';
-
 import './css/style.css';
 import './charts/ChartjsConfig';
+
 import { useEffect } from 'react';
 
 const App = () => {
