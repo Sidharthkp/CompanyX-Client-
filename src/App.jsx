@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Login from './pages/authentication/login'
+import Login from './pages/authentication/Login'
 import Register from './pages/authentication/Register'
-import Secret from './pages/authentication/secret'
+import Secret from './pages/authentication/Secret'
 
 const App = () => {
 

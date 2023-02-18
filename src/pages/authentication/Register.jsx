@@ -1,18 +1,30 @@
-import { LockClosedIcon } from '@heroicons/react/20/solid'
+import { LockClosedIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
-
 import { Link } from "react-router-dom";
-import { toast, ToastContainer } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify';
+import axios from 'axios';
 
 const Register = () => {
 
-    const [values, setValues] = useState({
-        email: "",
-        password: ""
-    })
+    const [values, setValues] = useState({ email: "", password: "" })
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        try {
+            const { data } = await axios.post("http://localhost:4111/register", {
+                ...values,
+            });
+            console.log(data);
+            if (data) {
+                if (data.errors) {
+
+                } else {
+
+                }
+            }
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     return (
@@ -29,12 +41,6 @@ const Register = () => {
                         <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
                             Sign in to your account
                         </h2>
-                        <p className="mt-2 text-center text-sm text-gray-600">
-                            Or{' '}
-                            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                                start your 14-day free trial
-                            </a>
-                        </p>
                     </div>
                     <form className="mt-8 space-y-6" onSubmit={(e) => handleSubmit(e)} method="POST">
                         <input type="hidden" name="remember" defaultValue="true" />
@@ -66,7 +72,7 @@ const Register = () => {
                                     required
                                     className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Password"
-                                    onChange={(e) => setValues({ ...values, [e.target.password]: e.target.value })}
+                                    onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
                                 />
                             </div>
                         </div>
