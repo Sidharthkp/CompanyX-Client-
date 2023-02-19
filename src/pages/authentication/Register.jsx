@@ -17,6 +17,8 @@ const Register = () => {
         try {
             const { data } = await axios.post("http://localhost:4111/register", {
                 ...values,
+            }, {
+                withCredentials: true
             });
 
             if (data) {

@@ -1,19 +1,40 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Transition from '../../utils/Transition';
-
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify'
 import UserAvatar from '../../images/user-avatar-32.png';
 
 function UserMenu() {
   const navigate = useNavigate()
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [cookies, removeCookie] = useCookies([]);
 
+  useEffect(() => {
+    const verifyUser = async () => {
+      if (!cookies.jwt) {
+        navigate("/login")
+      } else {
+        const { data } = await axios.post("http://localhost:4111", {}, {
+          withCredentials: true
+        });
+        if (!data.status) {
+          removeCookie("jwt");
+          navigate("/login");
+        } else toast(`Hi ${data.user}`, { theme: "dark" })
+      }
+    };
+    verifyUser()
+  }, [cookies, navigate, removeCookie])
+  
   const trigger = useRef(null);
   const dropdown = useRef(null);
-
+  
   const logout = () => {
+    removeCookie("jwt")
     setDropdownOpen(!dropdownOpen)
-    navigate("/register")
+    navigate("/login");
   }
 
   // close on click outside
@@ -93,6 +114,7 @@ function UserMenu() {
           </ul>
         </div>
       </Transition>
+      <ToastContainer />
     </div>
   )
 }
