@@ -1,18 +1,19 @@
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import Login from './pages/authentication/Login'
-import Register from './pages/authentication/Register'
+import Login from './pages/Authentication/Login'
+import Register from './pages/Authentication/Register'
 import AdminHome from './pages/Admin/AdminHome'
 import 'react-toastify/dist/ReactToastify.css';
 import './css/style.css';
 import './charts/ChartjsConfig';
 import { useEffect, useState } from 'react';
-import LoginAdminHR from './pages/authentication/AdminHRLogin';
+import LoginAdminHR from './pages/Authentication/AdminHRLogin';
 import HRHome from './pages/HR/HRHome';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import { setAuthentication, setNotAuthenticated } from './redux/reducer/Authentication';
 import axios from 'axios';
 import Error from './pages/Error';
+import EmployeeHome from './pages/Employees/EmployeeHome';
 
 const App = () => {
   const navigate = useNavigate()
@@ -50,6 +51,7 @@ const App = () => {
         <Route exact path='/adminHome' element={<AdminHome />}></Route>
         <Route exact path='/adminhrlogin' element={!authenticated ? <LoginAdminHR />  : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : null}></Route>
         <Route exact path='/hrHome' element={<HRHome />}></Route>
+        <Route exact path='/' element={<EmployeeHome />}></Route>
         <Route exact path='*' element={<Error />}></Route>
       </Routes>
 
