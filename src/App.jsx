@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Login from './pages/authentication/Login'
 import Register from './pages/authentication/Register'
-import Secret from './pages/Secret'
+import AdminHome from './pages/Admin/AdminHome'
 import 'react-toastify/dist/ReactToastify.css';
 import './css/style.css';
 import './charts/ChartjsConfig';
@@ -23,7 +23,7 @@ const App = () => {
       <Routes>
         <Route exact path='/login' element={<Login />}></Route>
         <Route exact path='/register' element={<Register />}></Route>
-        <Route exact path='/' element={<Secret />}></Route>
+        <Route exact path='/' element={<AdminHome />}></Route>
       </Routes>
 
     </>
