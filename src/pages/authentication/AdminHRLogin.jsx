@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify'
 
-const Login = () => {
+const LoginAdminHR = () => {
     const navigate = useNavigate()
     const [values, setValues] = useState({ email: "", password: "" })
 
@@ -26,6 +26,8 @@ const Login = () => {
                     const { email, password } = data.errors;
                     if (email) generateError(email);
                     else if (password) generateError(password);
+                } else if (data.errMessage) {
+                    generateError(data.errMessage)
                 } else {
                     navigate("/")
                 }
@@ -81,6 +83,19 @@ const Login = () => {
                                     onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
                                 />
                             </div>
+                            <div>
+                                <label htmlFor="password" className="sr-only">
+                                    Secret Key
+                                </label>
+                                <input
+                                    id="secret"
+                                    name="secretCode"
+                                    type="password"
+                                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                    placeholder="Enter your secret key"
+                                    onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
+                                />
+                            </div>
                         </div>
 
                         <div className="flex items-center justify-between">
@@ -130,4 +145,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default LoginAdminHR
