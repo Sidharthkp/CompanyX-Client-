@@ -14,6 +14,7 @@ import { setAuthentication, setNotAuthenticated } from './redux/reducer/Authenti
 import axios from 'axios';
 import Error from './pages/Error';
 import EmployeeHome from './pages/Employees/EmployeeHome';
+import LandingPage from './pages/LandingPage';
 
 const App = () => {
   const navigate = useNavigate()
@@ -51,7 +52,8 @@ const App = () => {
         <Route exact path='/adminHome' element={<AdminHome />}></Route>
         <Route exact path='/adminhrlogin' element={!authenticated ? <LoginAdminHR />  : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
         <Route exact path='/hrHome' element={<HRHome />}></Route>
-        <Route exact path='/' element={<EmployeeHome />}></Route>
+        <Route exact path='/employeeHome' element={<EmployeeHome />}></Route>
+        <Route exact path='/' element={!authenticated ?<LandingPage />  : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
         <Route exact path='*' element={<Error />}></Route>
       </Routes>
 
