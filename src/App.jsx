@@ -46,10 +46,10 @@ const App = () => {
     <>
 
       <Routes>
-        <Route exact path='/login' element={!authenticated ? <Login /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : null}></Route>
-        <Route exact path='/register' element={!authenticated ? <Register /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : null}></Route>
+        <Route exact path='/login' element={!authenticated ? <Login /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
+        <Route exact path='/register' element={!authenticated ? <Register /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
         <Route exact path='/adminHome' element={<AdminHome />}></Route>
-        <Route exact path='/adminhrlogin' element={!authenticated ? <LoginAdminHR />  : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : null}></Route>
+        <Route exact path='/adminhrlogin' element={!authenticated ? <LoginAdminHR />  : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
         <Route exact path='/hrHome' element={<HRHome />}></Route>
         <Route exact path='/' element={<EmployeeHome />}></Route>
         <Route exact path='*' element={<Error />}></Route>
