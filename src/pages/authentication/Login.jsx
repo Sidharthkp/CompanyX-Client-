@@ -26,6 +26,8 @@ const Login = () => {
                     const { email, password } = data.errors;
                     if (email) generateError(email);
                     else if (password) generateError(password);
+                } else if (data.errMessage) {
+                    generateError(data.errMessage)
                 } else {
                     navigate("/")
                 }

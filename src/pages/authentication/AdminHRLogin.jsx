@@ -6,7 +6,7 @@ import { toast, ToastContainer } from 'react-toastify'
 
 const LoginAdminHR = () => {
     const navigate = useNavigate()
-    const [values, setValues] = useState({ email: "", password: "" })
+    const [values, setValues] = useState({ email: "", password: "", secretCode: "empty" })
 
     const generateError = (err) => toast.error(err, {
         position: "bottom-right",
