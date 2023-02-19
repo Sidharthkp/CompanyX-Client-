@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import { setAuthentication, setNotAuthenticated } from './redux/reducer/Authentication';
 import axios from 'axios';
+import Error from './pages/Error';
 
 const App = () => {
   const navigate = useNavigate()
@@ -31,7 +32,6 @@ const App = () => {
         if (!data.status) {
           removeCookie("jwt");
           dispatch(setNotAuthenticated())
-          navigate("/login");
         } else {
           setRole(data.role)
           dispatch(setAuthentication())
@@ -40,8 +40,6 @@ const App = () => {
     };
     verifyUser()
   }, [cookies, navigate, removeCookie])
-
-  console.log(authenticated);
 
   return (
     <>
@@ -52,6 +50,7 @@ const App = () => {
         <Route exact path='/adminHome' element={<AdminHome />}></Route>
         <Route exact path='/adminhrlogin' element={!authenticated ? <LoginAdminHR />  : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : null}></Route>
         <Route exact path='/hrHome' element={<HRHome />}></Route>
+        <Route exact path='*' element={<Error />}></Route>
       </Routes>
 
     </>
