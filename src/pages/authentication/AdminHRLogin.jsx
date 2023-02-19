@@ -28,8 +28,10 @@ const LoginAdminHR = () => {
                     else if (password) generateError(password);
                 } else if (data.errMessage) {
                     generateError(data.errMessage)
-                } else {
-                    navigate("/")
+                } else if (data.role === "admin") {
+                    navigate("/adminHome")
+                } else if (data.role === "hr") {
+                    navigate("/hrHome")
                 }
             }
         } catch (err) {
