@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import SearchModal from './header/SearchModal';
 import Notifications from './header/Notifications';
 import Help from './header/Help';
-import UserMenu from './header/UserMenu';
+import HRMenu from './header/HRMenu';
 
-function Header({
+function HRHeader({
   sidebarOpen,
   setSidebarOpen
 }) {
@@ -55,7 +55,7 @@ function Header({
             <Help />
             {/*  Divider */}
             <hr className="w-px h-6 bg-slate-200 mx-3" />
-            <UserMenu />
+            <HRMenu />
 
           </div>
 
@@ -65,4 +65,4 @@ function Header({
   );
 }
 
-export default Header;
+export default HRHeader;

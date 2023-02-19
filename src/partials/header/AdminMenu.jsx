@@ -6,7 +6,7 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify'
 import UserAvatar from '../../images/user-avatar-32.png';
 
-function UserMenu() {
+function AdminMenu() {
   const navigate = useNavigate()
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [cookies, removeCookie] = useCookies([]);
@@ -119,4 +119,4 @@ function UserMenu() {
   )
 }
 
-export default UserMenu;
+export default AdminMenu;
