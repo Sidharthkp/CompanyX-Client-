@@ -5,9 +5,12 @@ import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify'
 import UserAvatar from '../../images/user-avatar-32.png';
+import { useDispatch } from 'react-redux';
+import { setNotAuthenticated } from '../../redux/reducer/Authentication';
 
 function HRMenu() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [cookies, removeCookie] = useCookies([]);
 
@@ -34,6 +37,7 @@ function HRMenu() {
   const logout = () => {
     removeCookie("jwt")
     setDropdownOpen(!dropdownOpen)
+    dispatch(setNotAuthenticated())
     navigate("/login");
   }
 

@@ -1,11 +1,14 @@
 import { LockClosedIcon } from '@heroicons/react/20/solid'
 import axios from 'axios';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify'
+import { setAuthentication } from '../../redux/reducer/Authentication';
 
 const Login = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [values, setValues] = useState({ email: "", password: "" })
 
     const generateError = (err) => toast.error(err, {
@@ -29,6 +32,7 @@ const Login = () => {
                 } else if (data.errMessage) {
                     generateError(data.errMessage)
                 } else {
+                    dispatch(setAuthentication())
                     navigate("/")
                 }
             }

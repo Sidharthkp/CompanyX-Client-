@@ -3,9 +3,12 @@ import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setAuthentication } from '../../redux/reducer/Authentication';
 
 const Register = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [values, setValues] = useState({ email: "", password: "" })
 
     const generateError = (err) => toast.error(err, {
@@ -27,6 +30,7 @@ const Register = () => {
                     if (email) generateError(email);
                     else if (password) generateError(password);
                 } else {
+                    dispatch(setAuthentication())
                     navigate("/")
                 }
             }
