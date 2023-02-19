@@ -8,6 +8,7 @@ import './charts/ChartjsConfig';
 
 import { useEffect } from 'react';
 import LoginAdminHR from './pages/authentication/AdminHRLogin';
+import HRHome from './pages/HR/HRHome';
 
 const App = () => {
   const location = useLocation();
@@ -26,6 +27,7 @@ const App = () => {
         <Route exact path='/register' element={<Register />}></Route>
         <Route exact path='/adminHome' element={<AdminHome />}></Route>
         <Route exact path='/adminhrlogin' element={<LoginAdminHR />}></Route>
+        <Route exact path='/hrHome' element={<HRHome />}></Route>
       </Routes>
 
     </>
