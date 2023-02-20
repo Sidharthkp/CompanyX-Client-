@@ -12,6 +12,7 @@ const Register = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [values, setValues] = useState({ email: "", password: "" })
+    const [passwordType, setPasswordType] = useState('password');
 
     const generateError = (err) => toast.error(err, {
         position: "bottom-right",
@@ -37,6 +38,14 @@ const Register = () => {
         }).catch((error) => {
             console.log(error.message);
         })
+    }
+
+    const togglePassword = () => {
+        if (passwordType === 'password') {
+            setPasswordType('text');
+        } else {
+            setPasswordType('password');
+        }
     }
 
     const handleSubmit = async (e) => {
@@ -102,7 +111,7 @@ const Register = () => {
                                 <input
                                     id="password"
                                     name="password"
-                                    type="password"
+                                    type={passwordType}
                                     autoComplete="current-password"
                                     className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Password"
@@ -117,17 +126,18 @@ const Register = () => {
                                     id="remember-me"
                                     name="remember-me"
                                     type="checkbox"
+                                    onClick={togglePassword}
                                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
-                                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                                    Remember me
-                                </label>
-                            </div>
-
-                            <div className="text-sm">
-                                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                                    Forgot your password?
-                                </a>
+                                {passwordType === "text" ? (
+                                    <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                                        Hide Password
+                                    </label>
+                                ) : (
+                                    <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                                        Show Password
+                                    </label>
+                                )}
                             </div>
                         </div>
 
