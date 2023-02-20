@@ -22,8 +22,8 @@ function SearchModal({
 
   const searchData = (data) => {
     return search === ""
-    ? data
-    : data.email.toLowerCase().includes(search)
+      ? data
+      : data.email.toLowerCase().includes(search)
   }
 
   const modalContent = useRef(null);
@@ -112,13 +112,37 @@ function SearchModal({
                       <li key={customer._id}>
                         <Link
                           className="flex items-center p-2 text-slate-800 hover:text-white hover:bg-indigo-500 rounded group"
-                          to="#0"
+                          to={{
+                            pathname: "/employeeDetails",
+                            search: `?q=${customer._id}`
+                          }}
                           onClick={() => setModalOpen(!modalOpen)}
                         >
                           <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
                             <img className="rounded-full" src={customer.image} width="40" height="40" alt={customer.name} />
                           </div>
-                          <span><span className="font-medium text-slate-800 group-hover:text-white">{customer.email}</span> - Conversation / … / Eva Patrick</span>
+                          <span className='flex flex-row justify-around w-full'>
+                            <div className=' flex flex-row justify-start w-full'>
+                              <span className="font-medium text-slate-800 group-hover:text-white">{customer.email}</span>
+                            </div>
+                            <div className='w-2/6 font-bold'>
+                              {customer.roles === "hr" && (
+                                <div className='bg-orange-600 w-full h-full flex flex-row justify-center'>
+                                  HR
+                                </div>
+                              )}
+                              {customer.roles === "admin" && (
+                                <div className='bg-red-600 w-full h-full flex flex-row justify-center'>
+                                  Admin
+                                </div>
+                              )}
+                              {!customer.roles && (
+                                <div className='bg-green-600 w-full h-full flex flex-row justify-center'>
+                                  Employee
+                                </div>
+                              )}
+                            </div>
+                          </span>
                         </Link>
                       </li>
                     )
