@@ -7,6 +7,8 @@ import { toast, ToastContainer } from 'react-toastify'
 import UserAvatar from '../../images/user-avatar-32.png';
 import { useDispatch } from 'react-redux';
 import { setNotAuthenticated } from '../../redux/reducer/Authentication';
+import { signOut } from "@firebase/auth";
+import { auth } from '../../firebase/config'
 
 function AdminMenu() {
   const navigate = useNavigate()
@@ -30,13 +32,16 @@ function AdminMenu() {
     };
     verifyUser()
   }, [cookies, navigate, removeCookie])
-  
+
   const trigger = useRef(null);
   const dropdown = useRef(null);
-  
+
   const logout = () => {
     removeCookie("jwt")
     setDropdownOpen(!dropdownOpen)
+    signOut(auth).then(() => {
+      localStorage.clear();
+    })
     dispatch(setNotAuthenticated())
     navigate("/");
   }
