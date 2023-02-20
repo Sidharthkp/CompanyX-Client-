@@ -5,7 +5,6 @@ import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAuthentication } from '../../redux/reducer/Authentication';
-import 'firebase/auth';
 import { auth, provider } from '../../firebase/Config';
 import { signInWithPopup } from 'firebase/auth';
 
