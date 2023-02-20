@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import DashboardCard10 from '../../partials/dashboard/DashboardCard10';
-import DashboardCard12 from '../../partials/dashboard/DashboardCard12';
-import HRHeader from '../../partials/HRHeader';
-import WelcomeBannerHR from '../../partials/dashboard/WelcomeBannerAdmin';
+import DashboardCard10 from '../../partials/dashboard/HR/DashboardCardhr';
+import HRHeader from '../../partials/header/HR/HRHeader';
+import WelcomeBannerHR from '../../partials/dashboard/HR/WelcomeBannerHR';
 
 const HRHome = () => {
 
@@ -26,8 +25,6 @@ const HRHome = () => {
                         <div className="grid grid-cols-12 gap-6">
                             {/* Card (Customers) */}
                             <DashboardCard10 />
-                            {/* Card (activity) */}
-                            <DashboardCard12 />
                         </div>
 
                     </div>

@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-import Image01 from '../../images/user-36-05.jpg';
-
 function DashboardCard10() {
 
   const [users, setUsers] = useState([]);
@@ -27,7 +25,7 @@ function DashboardCard10() {
   }, [])
 
   return (
-    <div className="col-span-full xl:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
+    <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
         <h2 className="font-semibold text-slate-800">Customers</h2>
       </header>

@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Transition from '../../utils/Transition';
+import Transition from '../../../utils/Transition';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify'
-import UserAvatar from '../../images/user-avatar-32.png';
+import UserAvatar from '../../../images/user-avatar-32.png';
 import { useDispatch } from 'react-redux';
-import { setNotAuthenticated } from '../../redux/reducer/Authentication';
+import { setNotAuthenticated } from '../../../redux/reducer/Authentication';
 import { signOut } from "@firebase/auth";
-import { auth } from '../../firebase/config'
+import { auth } from '../../../firebase/config'
 
 function HRMenu() {
     const navigate = useNavigate()
@@ -101,7 +101,7 @@ function HRMenu() {
                 >
                     <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
                         <div className="font-medium text-slate-800">CompanyX</div>
-                        <div className="text-xs text-slate-500 italic">Administrator</div>
+                        <div className="text-xs text-slate-500 italic">Human Resources</div>
                     </div>
                     <ul>
                         <li>

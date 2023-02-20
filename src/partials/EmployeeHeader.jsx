@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchModal from './header/SearchModal';
+import SearchModal from './header/HR/SearchModalHR';
 import Notifications from './header/Notifications';
 import Help from './header/Help';
 import EmployeeMenu from './header/EmployeeMenu';

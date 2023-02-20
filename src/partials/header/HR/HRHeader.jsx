@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import SearchModal from './header/SearchModal';
-import Notifications from './header/Notifications';
-import Help from './header/Help';
-import HRMenu from './header/HRMenu';
+import Notifications from '../Notifications';
+import Help from '../Help';
+import HRMenu from './HRMenu';
+import SearchModal from './SearchModalHR';
 
 function HRHeader({
   sidebarOpen,

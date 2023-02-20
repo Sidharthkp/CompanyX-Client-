@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function WelcomeBannerHR() {
+function WelcomeBannerAdmin() {
   const [wish, setWish] = useState('')
   var today = new Date()
   var curHr = today.getHours()
@@ -62,12 +62,12 @@ function WelcomeBannerHR() {
 
       {/* Content */}
       <div className="relative">
-        <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">{wish}, Human resources. 👋</h1>
-        <p>Here is what’s happening with your projects today:</p>
+        <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">{wish}, Admin. 👋</h1>
+        <p>Here is what’s happening with your company today:</p>
       </div>
 
     </div>
   );
 }
 
-export default WelcomeBannerHR;
+export default WelcomeBannerAdmin;

@@ -8,12 +8,12 @@ import DashboardCard06 from '../../partials/dashboard/DashboardCard06';
 import DashboardCard07 from '../../partials/dashboard/DashboardCard07';
 import DashboardCard08 from '../../partials/dashboard/DashboardCard08';
 import DashboardCard09 from '../../partials/dashboard/DashboardCard09';
-import DashboardCard10 from '../../partials/dashboard/DashboardCard10';
+import DashboardCard10 from '../../partials/dashboard/HR/DashboardCardhr';
 import DashboardCard11 from '../../partials/dashboard/DashboardCard11';
 import DashboardCard12 from '../../partials/dashboard/DashboardCard12';
 import DashboardCard13 from '../../partials/dashboard/DashboardCard13';
 import AdminHeader from '../../partials/AdminHeader';
-import WelcomeBannerAdmin from '../../partials/dashboard/WelcomeBannerHR';
+import WelcomeBannerAdmin from '../../partials/dashboard/WelcomeBannerAdmin';
 
 const AdminHome = () => {
 
