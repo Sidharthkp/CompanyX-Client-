@@ -17,14 +17,14 @@ function AdminMenu() {
   useEffect(() => {
     const verifyUser = async () => {
       if (!cookies.jwt) {
-        navigate("/login")
+        navigate("/")
       } else {
         const { data } = await axios.post("http://localhost:4111", {}, {
           withCredentials: true
         });
         if (!data.status) {
           removeCookie("jwt");
-          navigate("/login");
+          navigate("/");
         } else toast(`Hi ${data.user}`, { theme: "dark" })
       }
     };
@@ -38,7 +38,7 @@ function AdminMenu() {
     removeCookie("jwt")
     setDropdownOpen(!dropdownOpen)
     dispatch(setNotAuthenticated())
-    navigate("/login");
+    navigate("/");
   }
 
   // close on click outside
