@@ -4,21 +4,34 @@ import React, { useEffect, useState } from 'react';
 function DashboardCard10() {
 
   const [users, setUsers] = useState([]);
-
+  let currentDate = new Date();
   const getUsers = async () => {
     const res = await axios.get("http://localhost:4111/hr/getUsers");
     setUsers(res.data);
   }
 
   const customers = users
-    // {
-    //   id: '0',
-    //   image: Image01,
-    //   name: 'Alex Shatov',
-    //   email: 'alexshatov@gmail.com',
-    //   location: '🇺🇸',
-    //   spent: '$2,890.66',
-    // },
+  // {
+  //   id: '0',
+  //   image: Image01,
+  //   name: 'Alex Shatov',
+  //   email: 'alexshatov@gmail.com',
+  //   location: '🇺🇸',
+  //   spent: '$2,890.66',
+  // },
+
+  const checkCTC = (salary) => {
+    let boolean = false
+    salary.map((d) => {
+      let newDate = new Date(d.timeStamps)
+      let difference = newDate.getTime() - currentDate.getTime();
+      let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
+      if (TotalDays > 25) {
+        boolean =  true
+      }
+    })
+    return boolean
+  }
 
   useEffect(() => {
     getUsers();
@@ -32,22 +45,22 @@ function DashboardCard10() {
       <div className="p-3">
 
         {/* Table */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto h-96">
           <table className="table-auto w-full">
             {/* Table header */}
             <thead className="text-xs font-semibold uppercase text-slate-400 bg-slate-50">
               <tr>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Name</div>
+                  <div className="font-semibold text-left">Profile</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
                   <div className="font-semibold text-left">Email</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Spent</div>
+                  <div className="font-semibold text-left">Status</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-center">Country</div>
+                  <div className="font-semibold text-center">Role</div>
                 </th>
               </tr>
             </thead>
@@ -68,11 +81,27 @@ function DashboardCard10() {
                       <td className="p-2 whitespace-nowrap">
                         <div className="text-left">{customer.email}</div>
                       </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-left font-medium text-green-500">{customer.spent}</div>
+                      <td className="p-2 whitespace-nowrap flex flex-row">
+                        <div className="text-lg text-center">{
+                          checkCTC(customer.salaryStructure) ? "Not Done" : "Done"
+                        }</div>
                       </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-lg text-center">{customer.location}</div>
+                      <td className="p-2 whitespace-nowrap text-white">
+                        {customer.roles === "hr" && (
+                          <div className='bg-orange-600 w-full h-full flex flex-row justify-center'>
+                            HR
+                          </div>
+                        )}
+                        {customer.roles === "admin" && (
+                          <div className='bg-red-600 w-full h-full flex flex-row justify-center'>
+                            Admin
+                          </div>
+                        )}
+                        {!customer.roles && (
+                          <div className='bg-green-600 w-full h-full flex flex-row justify-center'>
+                            Employee
+                          </div>
+                        )}
                       </td>
                     </tr>
                   )
