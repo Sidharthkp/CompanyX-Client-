@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import SearchModal from './header/HR/SearchModalHR';
-import Notifications from './header/Notifications';
-import Help from './header/Help';
-import EmployeeMenu from './header/EmployeeMenu';
+import Notifications from '../Notifications';
+import Help from '../Help';
+import EmployeeMenu from './EmployeeMenu';
+import SearchModal from './SearchModalEmployee';
 
 function EmployeeHeader({
   sidebarOpen,
@@ -51,8 +51,6 @@ function EmployeeHeader({
               </svg>
             </button>
             <SearchModal id="search-modal" searchId="search" modalOpen={searchModalOpen} setModalOpen={setSearchModalOpen} />
-            <Notifications />
-            <Help />
             {/*  Divider */}
             <hr className="w-px h-6 bg-slate-200 mx-3" />
             <EmployeeMenu />
