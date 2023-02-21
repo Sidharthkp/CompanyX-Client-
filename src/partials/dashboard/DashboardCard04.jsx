@@ -16,7 +16,7 @@ function DashboardCard04() {
       {
         label: 'Direct',
         data: [
-          800, 1600, 900, 1300, 1950, 1700,
+          1500, 1600, 2200, 100, 150, 200,
         ],
         backgroundColor: tailwindConfig().theme.colors.blue[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
