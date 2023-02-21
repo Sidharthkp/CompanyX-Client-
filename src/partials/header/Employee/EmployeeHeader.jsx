@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Notifications from '../Notifications';
-import Help from '../Help';
 import EmployeeMenu from './EmployeeMenu';
 import SearchModal from './SearchModalEmployee';
 

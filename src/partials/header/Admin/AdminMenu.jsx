@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Transition from '../../utils/Transition';
+import Transition from '../../../utils/Transition';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify'
-import UserAvatar from '../../images/user-avatar-32.png';
+import UserAvatar from '../../../images/user-avatar-32.png';
 import { useDispatch } from 'react-redux';
-import { setNotAuthenticated } from '../../redux/reducer/Authentication';
+import { setNotAuthenticated } from '../../../redux/reducer/Authentication';
 import { signOut } from "@firebase/auth";
-import { auth } from '../../firebase/config'
+import { auth } from '../../../firebase/config'
 
 function AdminMenu() {
   const navigate = useNavigate()

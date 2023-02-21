@@ -63,7 +63,7 @@ function WelcomeBannerHR() {
       {/* Content */}
       <div className="relative">
         <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">{wish}, Employee. 👋</h1>
-        <p>Here is what’s happening with your employees today:</p>
+        <p>Here is what’s happening with your salary slips today:</p>
       </div>
 
     </div>

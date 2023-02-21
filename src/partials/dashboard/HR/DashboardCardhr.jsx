@@ -30,6 +30,9 @@ function DashboardCard10() {
         boolean =  true
       }
     })
+    if(salary.length === 0){
+      boolean = true
+    }
     return boolean
   }
 
@@ -40,7 +43,7 @@ function DashboardCard10() {
   return (
     <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">Customers</h2>
+        <h2 className="font-semibold text-slate-800">Employees</h2>
       </header>
       <div className="p-3">
 
@@ -57,7 +60,7 @@ function DashboardCard10() {
                   <div className="font-semibold text-left">Email</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Status</div>
+                  <div className="font-semibold text-left">Pay Slip Status</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
                   <div className="font-semibold text-center">Role</div>
