@@ -56,7 +56,7 @@ const BannerUploadModal = () => {
                                 <form onSubmit={(e)=>handleSubmit(e)}>
                                     <div className='flex flex-col w-full py-5'>
                                         <div className='flex flex-row w-full justify-center'>
-                                            <h1 className='text-black mb-5 text-4xl font-bold'>Edit Your Profile Picture</h1>
+                                            <h1 className='text-black mb-5 text-4xl font-bold'>Change the banner</h1>
                                         </div>
 
                                         <div className='flex flex-row justify-center my-6'>

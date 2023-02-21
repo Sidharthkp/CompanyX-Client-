@@ -24,7 +24,7 @@ function AdminHeader() {
           <div className="flex">
 
             <button onClick={(e) => openModal(e)}>
-              Add Banner
+              Change Banner
             </button>
 
           </div>
