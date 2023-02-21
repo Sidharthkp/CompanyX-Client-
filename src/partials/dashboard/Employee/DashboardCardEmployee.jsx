@@ -1,46 +1,48 @@
 import axios from 'axios';
+import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { auth } from '../../../firebase/Config';
 
-function DashboardCard10() {
+function DashboardCardEmployee() {
 
-  const [users, setUsers] = useState([]);
-  let currentDate = new Date();
-  const getUsers = async () => {
-    const res = await axios.get("http://localhost:4111/hr/getUsers");
-    setUsers(res.data);
-  }
+  const [slips, setSlips] = useState([]);
+  const [email, setEmail] = useState("");
 
-  const customers = users
-  // {
-  //   id: '0',
-  //   image: Image01,
-  //   name: 'Alex Shatov',
-  //   email: 'alexshatov@gmail.com',
-  //   location: '🇺🇸',
-  //   spent: '$2,890.66',
-  // },
-
-  const checkCTC = (salary) => {
-    let boolean = false
-    salary.map((d) => {
-      let newDate = new Date(d.timeStamps)
-      let difference = newDate.getTime() - currentDate.getTime();
-      let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
-      if (TotalDays > 25) {
-        boolean =  true
+  const authentication = async () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user || user.emailVerified) {
+        setEmail(user.email)
       }
     })
-    return boolean
+
+    const { data } = await axios.post("http://localhost:4111", {}, {
+      withCredentials: true
+    });
+    if (data.status) {
+      setEmail(data.email)
+    }
+  }
+
+  const getUsers = async () => {
+    let id
+    await axios.post("http://localhost:4111/employee/getEmployeeDetails", { email })
+      .then((data) => {
+        id = data.data._id
+      })
+    const res = await axios.post('http://localhost:4111/employee/getSalarySlip', { id });
+    setSlips(res.data);
   }
 
   useEffect(() => {
     getUsers();
-  }, [])
+    authentication();
+  }, [email])
 
   return (
     <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">Customers</h2>
+        <h2 className="font-semibold text-slate-800">Salary slips</h2>
       </header>
       <div className="p-3">
 
@@ -51,57 +53,43 @@ function DashboardCard10() {
             <thead className="text-xs font-semibold uppercase text-slate-400 bg-slate-50">
               <tr>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Profile</div>
+                  <div className="font-semibold text-left">Issued date</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Email</div>
+                  <div className="font-semibold text-left">Slip id</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-left">Status</div>
+                  <div className="font-semibold text-center">CTC</div>
                 </th>
                 <th className="p-2 whitespace-nowrap">
-                  <div className="font-semibold text-center">Role</div>
+                  <div className="font-semibold text-center">Action</div>
                 </th>
               </tr>
             </thead>
             {/* Table body */}
             <tbody className="text-sm divide-y divide-slate-100">
               {
-                customers.map(customer => {
+                slips.map(slips => {
                   return (
-                    <tr key={customer._id}>
+                    <tr key={slips._id}>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={customer.image} width="40" height="40" alt={customer.name} />
-                          </div>
-                          <div className="font-medium text-slate-800">{customer.name}</div>
-                        </div>
+                        <div className="text-left">{slips.timeStamps}</div>
                       </td>
                       <td className="p-2 whitespace-nowrap">
-                        <div className="text-left">{customer.email}</div>
+                        <div className="text-left">{slips._id}</div>
                       </td>
-                      <td className="p-2 whitespace-nowrap flex flex-row">
-                        <div className="text-lg text-center">{
-                          checkCTC(customer.salaryStructure) ? "Not Done" : "Done"
-                        }</div>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="text-center">{slips.CTC}</div>
                       </td>
-                      <td className="p-2 whitespace-nowrap text-white">
-                        {customer.roles === "hr" && (
-                          <div className='bg-orange-600 w-full h-full flex flex-row justify-center'>
-                            HR
-                          </div>
-                        )}
-                        {customer.roles === "admin" && (
-                          <div className='bg-red-600 w-full h-full flex flex-row justify-center'>
-                            Admin
-                          </div>
-                        )}
-                        {!customer.roles && (
-                          <div className='bg-green-600 w-full h-full flex flex-row justify-center'>
-                            Employee
-                          </div>
-                        )}
+                      <td className="p-2 whitespace-nowrap flex flex-row justify-center">
+                        <Link to={{
+                            pathname: "/slipDetails",
+                            search: `?q=${slips._id}`
+                          }}>
+                          <button className="bg-green-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150" type="button">
+                            Details
+                          </button>
+                        </Link>
                       </td>
                     </tr>
                   )
@@ -117,4 +105,4 @@ function DashboardCard10() {
   );
 }
 
-export default DashboardCard10;
+export default DashboardCardEmployee;

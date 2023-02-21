@@ -51,7 +51,7 @@ const SlipDetails = () => {
     useEffect(() => {
         authentication()
         getSlip()
-    }, [])
+    }, [email])
     return (
         <section className=" py-1 bg-blueGray-50">
             <div className="w-full lg:w-8/12 px-4 mx-auto mt-6">

@@ -12,8 +12,8 @@ function SearchModal({
   setModalOpen
 }) {
 
-  const [slips, setSlips] = useState([]);
   const [search, setSearch] = useState("");
+  const [slips, setSlips] = useState([]);
   const [email, setEmail] = useState("");
 
   const authentication = async () => {
