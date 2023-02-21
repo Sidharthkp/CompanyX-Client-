@@ -22,15 +22,30 @@ const EmployeeDetails = () => {
         setUser(res.data);
     }
 
-    const ctc = (e) => {
+    const ctc = async (e) => {
         e.preventDefault()
         let perHour = (parseInt(basicSalary) / 25) / 8;
         let earnings = parseInt(reimbursements) + perHour + parseInt(fixedAllowance);
         let deductions = parseInt(incomeTax) + parseInt(insurance);
         let overTime = perHour * parseInt(overtime);
         let leave = (full * (perHour * 8)) - (half * (perHour * 4))
-
         setCTC((earnings + deductions + overTime) - leave)
+        await axios.post('http://localhost:4111/hr/userSalarySet', {
+            id,
+            basic: basicSalary,
+            reimbursements,
+            fixedAllowance,
+            incomeTax,
+            insurance,
+            overTime,
+            halfDay: half,
+            fullDay: full,
+            CTC
+        }).then(() => {
+            console.log("Send");
+        }).catch((err) => {
+            console.log(err.message);
+        })
     }
 
     const goBack = (e) => {
@@ -87,7 +102,7 @@ const EmployeeDetails = () => {
                                         <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                             BASIC
                                         </label>
-                                        <input type="email" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => {setBasicSalary(e.target.value)}} />
+                                        <input type="email" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => { setBasicSalary(e.target.value) }} />
                                     </div>
                                 </div>
                                 <div className="w-full lg:w-4/12 px-4">
@@ -95,7 +110,7 @@ const EmployeeDetails = () => {
                                         <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                             Reimbursements
                                         </label>
-                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => {setReimbursements(e.target.value)}} />
+                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => { setReimbursements(e.target.value) }} />
                                     </div>
                                 </div>
                                 <div className="w-full lg:w-4/12 px-4">
@@ -103,7 +118,7 @@ const EmployeeDetails = () => {
                                         <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                             FIXED ALLOWANCE
                                         </label>
-                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => {setFixedAllowance(e.target.value)}} />
+                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => { setFixedAllowance(e.target.value) }} />
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +134,7 @@ const EmployeeDetails = () => {
                                         <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                             Income Tax
                                         </label>
-                                        <input type="email" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => {setIncomeTax(e.target.value)}} />
+                                        <input type="email" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => { setIncomeTax(e.target.value) }} />
                                     </div>
                                 </div>
                                 <div className="w-full lg:w-4/12 px-4">
@@ -127,7 +142,7 @@ const EmployeeDetails = () => {
                                         <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                             Employee State Insurance
                                         </label>
-                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => {setInsurance(e.target.value)}} />
+                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => { setInsurance(e.target.value) }} />
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +157,7 @@ const EmployeeDetails = () => {
                                         <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                             OVERTIME <span className="text-red-600">In hours</span>
                                         </label>
-                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => {setOvertime(e.target.value)}} />
+                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => { setOvertime(e.target.value) }} />
                                     </div>
                                 </div>
                                 <div className="w-full lg:w-4/12 px-4">
@@ -150,7 +165,7 @@ const EmployeeDetails = () => {
                                         <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                             Half Day leave <span className="text-red-600">In Days</span>
                                         </label>
-                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => {setHalf(e.target.value)}} />
+                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => { setHalf(e.target.value) }} />
                                     </div>
                                 </div>
                                 <div className="w-full lg:w-4/12 px-4">
@@ -158,7 +173,7 @@ const EmployeeDetails = () => {
                                         <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
                                             Full Day leave <span className="text-red-600">In Days</span>
                                         </label>
-                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => {setFull(e.target.value)}} />
+                                        <input type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" onChange={(e) => { setFull(e.target.value) }} />
                                     </div>
                                 </div>
                             </div>
