@@ -12,6 +12,7 @@ function SearchModal({
 
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  let currentDate = new Date();
 
   const customers = users
 
@@ -38,6 +39,19 @@ function SearchModal({
     document.addEventListener('click', clickHandler);
     return () => document.removeEventListener('click', clickHandler);
   });
+
+  const checkCTC = (salary) => {
+    let boolean = false
+    salary.map((d) => {
+      let newDate = new Date(d.timeStamps)
+      let difference = newDate.getTime() - currentDate.getTime();
+      let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
+      if (TotalDays > 25) {
+        boolean = true
+      }
+    })
+    return boolean
+  }
 
   // close if the esc key is pressed
   useEffect(() => {
@@ -124,6 +138,11 @@ function SearchModal({
                           <span className='flex flex-row justify-around w-full'>
                             <div className=' flex flex-row justify-start w-full'>
                               <span className="font-medium text-slate-800 group-hover:text-white">{customer.email}</span>
+                            </div>
+                            <div className=' flex flex-row justify-start w-full'>
+                              {
+                                checkCTC(customer.salaryStructure) ? "Not Done" : "Done"
+                              }
                             </div>
                             <div className='w-2/6 font-bold'>
                               {customer.roles === "hr" && (
