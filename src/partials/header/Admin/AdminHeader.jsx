@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setBannerOpen } from '../../../redux/reducer/AddBanner';
+import { setBannerDeleteOpen } from '../../../redux/reducer/BannerDelete';
 import SearchModal from '../HR/SearchModalHR';
 import AdminMenu from './AdminMenu';
+import BannerDeleteModal from './BannerDeleteModal';
 import BannerUploadModal from './BannerUploadModal';
 
 function AdminHeader() {
@@ -15,6 +17,11 @@ function AdminHeader() {
     dispatch(setBannerOpen())
   }
 
+  const openDeletModal = (e) => {
+    e.preventDefault()
+    dispatch(setBannerDeleteOpen())
+  }
+
   return (
     <header className="sticky top-0 bg-white border-b border-slate-200 z-30">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -23,8 +30,12 @@ function AdminHeader() {
           {/* Header: Left side */}
           <div className="flex">
 
-            <button onClick={(e) => openModal(e)}>
-              Change Banner
+            <button className='bg-green-600 w-4/6 m-3 text-white text-sm font-bold' onClick={(e) => openModal(e)}>
+              Add Banner
+            </button>
+
+            <button className='bg-red-600 w-4/6 m-3 text-white text-sm font-bold' onClick={(e) => openDeletModal(e)}>
+              Delete Banner
             </button>
 
           </div>
@@ -53,6 +64,7 @@ function AdminHeader() {
         </div>
       </div>
       <BannerUploadModal />
+      <BannerDeleteModal />
     </header>
   );
 }

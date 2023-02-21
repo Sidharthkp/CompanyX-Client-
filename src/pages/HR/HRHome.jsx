@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DashboardCard10 from '../../partials/dashboard/HR/DashboardCardhr';
 import HRHeader from '../../partials/header/HR/HRHeader';
 import WelcomeBannerHR from '../../partials/dashboard/HR/WelcomeBannerHR';
+import Banner from '../../partials/dashboard/Admin/Banner';
 
 const HRHome = () => {
 
@@ -20,6 +21,9 @@ const HRHome = () => {
 
                         {/* Welcome banner */}
                         <WelcomeBannerHR />
+
+                        {/* banner */}
+                        <Banner />
 
                         {/* Cards */}
                         <div className="grid grid-cols-12 gap-6">

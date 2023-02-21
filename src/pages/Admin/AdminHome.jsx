@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DashboardCard04 from '../../partials/dashboard/DashboardCard04';
 import DashboardCard05 from '../../partials/dashboard/DashboardCard05';
 import DashboardCard06 from '../../partials/dashboard/DashboardCard06';

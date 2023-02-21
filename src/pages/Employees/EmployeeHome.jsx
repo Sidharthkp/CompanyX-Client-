@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Banner from '../../partials/dashboard/Admin/Banner';
 import DashboardCardEmployee from '../../partials/dashboard/Employee/DashboardCardEmployee';
 import WelcomeBannerEmployee from '../../partials/dashboard/Employee/WelcomeBannerEmployee';
 import EmployeeHeader from '../../partials/header/Employee/EmployeeHeader';
@@ -17,7 +18,10 @@ const EmployeeHome = () => {
 
                         {/* Welcome banner */}
                         <WelcomeBannerEmployee />
-
+                        
+                        {/* banner */}
+                        <Banner />
+                        
                         {/* Cards */}
                         <div className="grid grid-cols-12 gap-6">
                         <DashboardCardEmployee />
