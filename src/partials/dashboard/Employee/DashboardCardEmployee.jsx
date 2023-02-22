@@ -16,7 +16,7 @@ function DashboardCardEmployee() {
       }
     })
 
-    const { data } = await axios.post("http://localhost:4111", {}, {
+    const { data } = await axios.post("https://companyx.cyclic.app", {}, {
       withCredentials: true
     });
     if (data.status) {
@@ -26,11 +26,11 @@ function DashboardCardEmployee() {
 
   const getUsers = async () => {
     let id
-    await axios.post("http://localhost:4111/employee/getEmployeeDetails", { email })
+    await axios.post("https://companyx.cyclic.app/employee/getEmployeeDetails", { email })
       .then((data) => {
         id = data.data._id
       })
-    const res = await axios.post('http://localhost:4111/employee/getSalarySlip', { id });
+    const res = await axios.post('https://companyx.cyclic.app/employee/getSalarySlip', { id });
     setSlips(res.data);
   }
 

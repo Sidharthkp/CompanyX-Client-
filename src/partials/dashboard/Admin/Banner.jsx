@@ -6,7 +6,7 @@ const Banner = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const getBanner = async () => {
-        await axios.get("http://localhost:4111/admin/getBanner")
+        await axios.get("https://companyx.cyclic.app/admin/getBanner")
             .then((data) => {
                 setBanner(data.data)
             }).catch(err=>console.log(err))
@@ -38,7 +38,7 @@ const Banner = () => {
     return (
         <div className="relative w-full h-96 overflow-hidden bg-gray-900">
             <img
-                src={`http://localhost:4111/admin/image?q=${images[currentImageIndex]?.image}`}
+                src={`https://companyx.cyclic.app/admin/image?q=${images[currentImageIndex]?.image}`}
                 // alt={`Image ${currentImageIndex + 1}`}
                 className="absolute top-0 left-0 w-full h-full object-cover"
             />

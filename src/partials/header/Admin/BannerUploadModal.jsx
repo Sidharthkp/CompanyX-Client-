@@ -27,7 +27,7 @@ const BannerUploadModal = () => {
         }
 
         axios
-            .post(`http://localhost:4111/admin/addBanner`, formData, {
+            .post(`https://companyx.cyclic.app/admin/addBanner`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

@@ -17,7 +17,7 @@ function SearchModal({
   const customers = users
 
   const getUsers = async () => {
-    const res = await axios.get("http://localhost:4111/hr/getUsers");
+    const res = await axios.get("https://companyx.cyclic.app/hr/getUsers");
     setUsers(res.data);
   }
 

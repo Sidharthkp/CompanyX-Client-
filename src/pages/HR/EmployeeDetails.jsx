@@ -18,7 +18,7 @@ const EmployeeDetails = () => {
     const queryParams = new URLSearchParams(location.search);
     const id = queryParams.get("q");
     const getUsers = async () => {
-        const res = await axios.get(`http://localhost:4111/hr/getUserDetails?q=${id}`);
+        const res = await axios.get(`https://companyx.cyclic.app/hr/getUserDetails?q=${id}`);
         setUser(res.data);
     }
 
@@ -30,7 +30,7 @@ const EmployeeDetails = () => {
         let overTime = perHour * parseInt(overtime);
         let leave = (full * (perHour * 8)) - (half * (perHour * 4))
         setCTC((earnings + deductions + overTime) - leave)
-        await axios.post('http://localhost:4111/hr/userSalarySet', {
+        await axios.post('https://companyx.cyclic.app/hr/userSalarySet', {
             id,
             basic: basicSalary,
             reimbursements,

@@ -21,7 +21,7 @@ function AdminMenu() {
       if (!cookies.jwt) {
         navigate("/")
       } else {
-        const { data } = await axios.post("http://localhost:4111", {}, {
+        const { data } = await axios.post("https://companyx.cyclic.app", {}, {
           withCredentials: true
         });
         if (!data.status) {
