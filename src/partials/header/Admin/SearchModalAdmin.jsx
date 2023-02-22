@@ -135,7 +135,7 @@ function SearchModalAdmin({
                       <li key={customer._id}>
                         <div className='relative flex flex-row justify-start w-full'>
                           {
-                            customer.access === true ?
+                            customer.access === false ?
 
                               customer._id != "63f3b8a8c4ef32ea9b001cc3" && (<div className='absolute'>
                                 <button onClick={() => action(customer._id)} className='bg-blue-600 mt-4 absolute text-white font-bold w-16 z-40 rounded-2xl h-8 flex flex-row justify-center'>

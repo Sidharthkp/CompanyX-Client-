@@ -21,22 +21,17 @@ const Login = () => {
     //google
     const google = (e) => {
         e.preventDefault()
-        signInWithPopup(auth, provider).then((data) => {
-            let chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            let passwordLength = 12;
-            let password = "";
-            for (let i = 0; i <= passwordLength; i++) {
-                let randomNumber = Math.floor(Math.random() * chars.length);
-                password += chars.substring(randomNumber, randomNumber + 1);
+        signInWithPopup(auth, provider).then(async (data) => {
+            const { value } = await axios.post("http://localhost:4111/google", { email: data.user.email})
+            if (value) {
+                console.log(value);
+                if (value.errMessage) {
+                    generateError(value.errMessage)
+                } else {
+                    dispatch(setAuthentication())
+                    navigate("/employeeHome");
+                }
             }
-            axios.post("http://localhost:4111/register", { email: data.user.email, password: password })
-                .then((res) => console.log(res)
-                )
-                .catch((err) => console.log(err));
-            dispatch(setAuthentication())
-            navigate("/");
-        }).catch((error) => {
-            console.log(error.message);
         })
     }
 
