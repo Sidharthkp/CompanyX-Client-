@@ -1,10 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-// import BarChart from '../../charts/BarChart01';
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
-// Import utilities
-// import { tailwindConfig } from '../../utils/Utils';
 
 function DashboardCard04() {
   const [basic, setBasic] = useState([]);
@@ -32,6 +29,12 @@ function DashboardCard04() {
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgb(255, 99, 132)",
         data: basic,
+      },
+      {
+        label: employee,
+        backgroundColor: "rgb(255, 99, 132)",
+        borderColor: "rgb(255, 99, 132)",
+        data: CTC,
       },
     ],
   };

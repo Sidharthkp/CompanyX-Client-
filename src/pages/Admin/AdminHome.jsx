@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import DashboardCard04 from '../../partials/dashboard/DashboardCard04';
-import DashboardCard06 from '../../partials/dashboard/DashboardCard06';
 import DashboardCard10 from '../../partials/dashboard/HR/DashboardCardhr';
-import DashboardCard11 from '../../partials/dashboard/DashboardCard11';
 import AdminHeader from '../../partials/header/Admin/AdminHeader';
 import WelcomeBannerAdmin from '../../partials/dashboard/WelcomeBannerAdmin';
 import Banner from '../../partials/dashboard/Admin/Banner';
@@ -33,13 +31,8 @@ const AdminHome = () => {
                         <div className="grid grid-cols-12 gap-6">
                             {/* Bar chart (Direct vs Indirect) */}
                             <DashboardCard04 />
-                            {/* Doughnut chart (Top Countries) */}
-                            <DashboardCard06 />
                             {/* Card (Customers) */}
                             <DashboardCard10 />
-                            {/* Card (Reasons for Refunds) */}
-                            <DashboardCard11 />
-
                         </div>
 
                     </div>

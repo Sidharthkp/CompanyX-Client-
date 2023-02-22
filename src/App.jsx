@@ -4,7 +4,6 @@ import Register from './pages/Authentication/Register'
 import AdminHome from './pages/Admin/AdminHome'
 import 'react-toastify/dist/ReactToastify.css';
 import './css/style.css';
-import './charts/ChartjsConfig';
 import { useEffect, useState } from 'react';
 import LoginAdminHR from './pages/Authentication/AdminHRLogin';
 import HRHome from './pages/HR/HRHome';
