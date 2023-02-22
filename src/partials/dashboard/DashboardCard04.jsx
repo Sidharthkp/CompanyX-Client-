@@ -25,13 +25,13 @@ function DashboardCard04() {
     labels: labels,
     datasets: [
       {
-        label: employee,
+        label: "BASIC",
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgb(255, 99, 132)",
         data: basic,
       },
       {
-        label: employee,
+        label: "CTC",
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgb(255, 99, 132)",
         data: CTC,
