@@ -8,7 +8,7 @@ import UserAvatar from '../../../images/user-avatar-32.png';
 import { useDispatch } from 'react-redux';
 import { setNotAuthenticated } from '../../../redux/reducer/Authentication';
 import { signOut } from "@firebase/auth";
-import { auth } from '../../../firebase/config'
+import { auth } from '../../../firebase/Config'
 
 function HRMenu() {
     const navigate = useNavigate()
