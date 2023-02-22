@@ -75,7 +75,7 @@ const App = () => {
     <>
 
       <Routes>
-        <Route exact path='/login' element={!authenticated ? <Login /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
+        <Route exact path='/' element={!authenticated ? <Login /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
         <Route exact path='/register' element={!authenticated ? <Register /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
         <Route exact path='/adminHome' element={<AdminHome />}></Route>
         <Route exact path='/adminhrlogin' element={!authenticated ? <LoginAdminHR /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
@@ -83,7 +83,6 @@ const App = () => {
         <Route exact path='/employeeDetails' element={<EmployeeDetails />}></Route>
         <Route exact path='/employeeHome' element={<EmployeeHome />}></Route>
         <Route exact path='/slipDetails' element={<SlipDetails />}></Route>
-        <Route exact path='/' element={!authenticated ? <LandingPage /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
         <Route exact path='*' element={<Error />}></Route>
       </Routes>
 

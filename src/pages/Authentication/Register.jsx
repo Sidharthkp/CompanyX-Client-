@@ -156,7 +156,13 @@ const Register = () => {
                             <p className="font-medium text-indigo-600">
                                 Already have an account?
                             </p>
-                            <Link to="/login" className='ml-2 font-bold'>Login</Link>
+                            <Link to="/" className='ml-2 font-bold'>Login</Link>
+                        </div>
+                        <div className='flex flex-row'>
+                            <p className="font-medium text-indigo-600">
+                                HR/Admin login ?
+                            </p>
+                            <Link to="/adminhrlogin" className='ml-2 font-bold'>Go to HR/Admin Login</Link>
                         </div>
                     </form>
                     <div className='flex justify-center my-2'>

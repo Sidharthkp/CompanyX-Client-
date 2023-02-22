@@ -155,6 +155,12 @@ const Login = () => {
                             </p>
                             <Link to="/register" className='ml-2 font-bold'>Sign up</Link>
                         </div>
+                        <div className='flex flex-row'>
+                            <p className="font-medium text-indigo-600">
+                                Employee login ?
+                            </p>
+                            <Link to="/" className='ml-2 font-bold'>Go to Employee Login</Link>
+                        </div>
                     </form>
                     <div className='flex justify-center my-2'>
                         <button onClick={(e) => google(e)}
