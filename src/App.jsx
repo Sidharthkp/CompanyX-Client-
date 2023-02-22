@@ -13,7 +13,6 @@ import { setAuthentication, setNotAuthenticated } from './redux/reducer/Authenti
 import axios from 'axios';
 import Error from './pages/Error';
 import EmployeeHome from './pages/Employees/EmployeeHome';
-import LandingPage from './pages/LandingPage';
 import { auth } from './firebase/Config'
 import { onAuthStateChanged } from 'firebase/auth';
 import EmployeeDetails from './pages/HR/EmployeeDetails';
