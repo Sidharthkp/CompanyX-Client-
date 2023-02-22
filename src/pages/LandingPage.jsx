@@ -29,7 +29,7 @@ const LandingPage = () => {
                             </h3>
 
                             <p className="mt-2 text-sm text-gray-500">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, adipisci.
+                                Employees can sign in here !!!
                             </p>
                         </div>
                     </button>
@@ -49,7 +49,7 @@ const LandingPage = () => {
                             </h3>
 
                             <p className="mt-2 text-sm text-gray-500">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, adipisci.
+                                Admins can sign in here !!!
                             </p>
                         </div>
                     </button>
