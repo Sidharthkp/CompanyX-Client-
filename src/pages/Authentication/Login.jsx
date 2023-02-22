@@ -159,7 +159,7 @@ const Login = () => {
                             <p className="font-medium text-indigo-600">
                                 Employee login ?
                             </p>
-                            <Link to="/" className='ml-2 font-bold'>Go to Employee Login</Link>
+                            <Link to="/adminhrlogin" className='ml-2 font-bold'>Go to Employee Login</Link>
                         </div>
                     </form>
                     <div className='flex justify-center my-2'>
