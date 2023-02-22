@@ -58,6 +58,7 @@ const Login = () => {
                     if (email) generateError(email);
                     else if (password) generateError(password);
                 } else if (data.errMessage) {
+                    console.log("error");
                     generateError(data.errMessage)
                 } else {
                     dispatch(setAuthentication())
