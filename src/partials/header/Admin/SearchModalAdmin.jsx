@@ -17,12 +17,12 @@ function SearchModalAdmin({
   const customers = users
 
   const getUsers = async () => {
-    const res = await axios.get("https://companyx.cyclic.app/hr/getUsers");
+    const res = await axios.get(`https://${import.meta.env.VITE_IP_ADD}/hr/getUsers`);
     setUsers(res.data);
   }
 
   const action = async (id) => {
-    await axios.post("https://companyx.cyclic.app/admin/accessControll", { id })
+    await axios.post(`https://${import.meta.env.VITE_IP_ADD}/admin/accessControll`, { id })
       .then((data) => {
         console.log("Done");
       }).catch((err) => {

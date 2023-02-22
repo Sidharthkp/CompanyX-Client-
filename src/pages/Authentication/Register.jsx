@@ -51,7 +51,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post("https://companyx.cyclic.app/register", {
+            const { data } = await axios.post(`https://${import.meta.env.VITE_IP_ADD}/register`, {
                 ...values,
             }, {
                 withCredentials: true

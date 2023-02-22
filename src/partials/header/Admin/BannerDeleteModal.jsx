@@ -9,7 +9,7 @@ const BannerDeleteModal = () => {
     const [deleteModal, setdelete] = useState(false)
 
     const getBanner = async () => {
-        await axios.get("https://companyx.cyclic.app/admin/getBanner")
+        await axios.get(`https://${import.meta.env.VITE_IP_ADD}/admin/getBanner`)
             .then((data) => {
                 setBanner(data.data)
             }).catch(err => console.log(err))
@@ -27,7 +27,7 @@ const BannerDeleteModal = () => {
         e.preventDefault();
 
         axios
-            .post(`https://companyx.cyclic.app/admin/deleteBanner`, { id })
+            .post(`https://${import.meta.env.VITE_IP_ADD}/admin/deleteBanner`, { id })
             .then((res) => {
                 dispatch(setBannerDeleteClose())
             }
@@ -86,7 +86,7 @@ const BannerDeleteModal = () => {
                                                         </div>}
                                                     </div>
                                                 </div>
-                                                <img src={`https://companyx.cyclic.app/admin/image?q=${x.image}`} alt="" />
+                                                <img src={`https://${import.meta.env.VITE_IP_ADD}/admin/image?q=${x.image}`} alt="" />
                                             </div>
                                         )
                                     }) : null}

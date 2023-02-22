@@ -18,7 +18,7 @@ const SlipDetails = () => {
                 setEmail(user.email)
             }
         })
-        const { data } = await axios.post("https://companyx.cyclic.app", {}, {
+        const { data } = await axios.post(`https://${import.meta.env.VITE_IP_ADD}`, {}, {
             withCredentials: true
         });
         if (data.status) {
