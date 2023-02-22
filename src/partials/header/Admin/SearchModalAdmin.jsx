@@ -135,34 +135,34 @@ function SearchModalAdmin({
                       <li key={customer._id}>
                         <div className='relative flex flex-row justify-start w-full'>
                           {
-                              customer.access === true ?
+                            customer.access === true ?
 
                               customer._id != "63f3b8a8c4ef32ea9b001cc3" && (<div className='absolute'>
-                                <button onClick={() => action(customer._id)} className='bg-blue-600 absolute font-bold w-10 z-40 rounded-2xl h-full flex flex-row justify-center'>
-                                  Un BLock
+                                <button onClick={() => action(customer._id)} className='bg-blue-600 mt-4 absolute text-white font-bold w-16 z-40 rounded-2xl h-8 flex flex-row justify-center'>
+                                  <a className='my-2 text-xs'>Un Block</a>
+
                                 </button>
                               </div>)
 
                               :
 
                               customer._id != "63f3b8a8c4ef32ea9b001cc3" && (<div className='absolute'>
-                                <button onClick={() => action(customer._id)} className='bg-red-600 absolute font-bold w-10 z-40 rounded-2xl h-full flex flex-row justify-center'>
-                                  BLock
+                                <button onClick={() => action(customer._id)} className='bg-red-600 mt-4 absolute text-white text-center font-bold w-16 z-40 rounded-2xl h-8 flex flex-row justify-center'>
+                                  <a className='my-2 text-xs'>Block</a>
                                 </button>
                               </div>)
 
                           }
                         </div>
                         <Link
-                          className="flex items-center p-2 text-slate-800 hover:text-white hover:bg-indigo-500 rounded group"
+                          className="flex items-center p-2 text-slate-800 hover:text-white  hover:bg-indigo-500 rounded group"
                           to={{
                             pathname: "/employeeDetails",
                             search: `?q=${customer._id}`
                           }}
                           onClick={() => setModalOpen(!modalOpen)}
                         >
-                          <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-                            <img className="rounded-full" src={customer.image} width="40" height="40" alt={customer.name} />
+                          <div className="w-10 h-10 shrink-0 mr-5">
                           </div>
                           <span className='flex flex-row justify-around w-full'>
                             <div className=' flex flex-row justify-start w-full'>
