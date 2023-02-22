@@ -30,11 +30,11 @@ function AdminHeader() {
           {/* Header: Left side */}
           <div className="flex">
 
-            <button className='bg-green-600 w-4/6 m-3 text-white text-sm font-bold' onClick={(e) => openModal(e)}>
+            <button className='bg-green-600 rounded-lg w-4/6 m-3 text-white text-sm font-bold' onClick={(e) => openModal(e)}>
               Add Banner
             </button>
 
-            <button className='bg-red-600 w-4/6 m-3 text-white text-sm font-bold' onClick={(e) => openDeletModal(e)}>
+            <button className='bg-red-600 rounded-lg w-4/6 m-3 text-white text-sm font-bold' onClick={(e) => openDeletModal(e)}>
               Delete Banner
             </button>
 

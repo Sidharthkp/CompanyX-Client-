@@ -1,50 +1,53 @@
-import React from 'react';
-import BarChart from '../../charts/BarChart01';
-
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+// import BarChart from '../../charts/BarChart01';
+import Chart from "chart.js/auto";
+import { Line } from "react-chartjs-2";
 // Import utilities
-import { tailwindConfig } from '../../utils/Utils';
+// import { tailwindConfig } from '../../utils/Utils';
 
 function DashboardCard04() {
+  const [basic, setBasic] = useState([]);
+  const [insurance, setInsurance] = useState([]);
+  const [CTC, setCTC] = useState([]);
+  const [timeStamps, setTimeStamps] = useState([]);
+  const [employee, setEmployee] = useState([]);
 
-  const chartData = {
-    labels: [
-      '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
-    ],
+  const getSlip = async () => {
+    const res = await axios.get('http://localhost:4111/admin/getSalaryDetails');
+    setBasic(res.data.basic)
+    setInsurance(res.data.insurance)
+    setCTC(res.data.CTC)
+    setTimeStamps(res.data.timeStamps)
+    setEmployee(res.data.employee)
+  }
+
+  const labels = timeStamps
+
+  const data = {
+    labels: labels,
     datasets: [
-      // Light blue bars
       {
-        label: 'Direct',
-        data: [
-          1500, 1600, 2200, 100, 150, 200,
-        ],
-        backgroundColor: tailwindConfig().theme.colors.blue[400],
-        hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
-        barPercentage: 0.66,
-        categoryPercentage: 0.66,
-      },
-      // Blue bars
-      {
-        label: 'Indirect',
-        data: [
-          4900, 2600, 5350, 4800, 5200, 4800,
-        ],
-        backgroundColor: tailwindConfig().theme.colors.indigo[500],
-        hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
-        barPercentage: 0.66,
-        categoryPercentage: 0.66,
+        label: employee,
+        backgroundColor: "rgb(255, 99, 132)",
+        borderColor: "rgb(255, 99, 132)",
+        data: basic,
       },
     ],
   };
 
+  useEffect(() => {
+    getSlip()
+  }, [])
+
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">Direct VS Indirect</h2>
+        <h2 className="font-semibold text-slate-800">Basic VS CTC</h2>
       </header>
-      {/* Chart built with Chart.js 3 */}
-      {/* Change the height attribute to adjust the chart height */}
-      <BarChart data={chartData} width={595} height={248} />
+
+      <Line data={data} width={595} height={248} />
+
     </div>
   );
 }
