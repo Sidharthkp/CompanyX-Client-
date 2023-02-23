@@ -22,7 +22,7 @@ const Login = () => {
     const google = (e) => {
         e.preventDefault()
         signInWithPopup(auth, provider).then(async (data) => {
-            const { value } = await axios.post(`https://${import.meta.env.VITE_IP_ADD}/google`, { email: data.user.email})
+            const { value } = await axios.post(`${import.meta.env.VITE_IP_ADD}/google`, { email: data.user.email})
             if (value) {
                 console.log(value);
                 if (value.errMessage) {
@@ -46,7 +46,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post(`https://${import.meta.env.VITE_IP_ADD}/login`, {
+            const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}/login`, {
                 ...values,
             }, {
                 withCredentials: true

@@ -27,7 +27,7 @@ const BannerUploadModal = () => {
         }
 
         axios
-            .post(`https://${import.meta.env.VITE_IP_ADD}/admin/addBanner`, formData, {
+            .post(`${import.meta.env.VITE_IP_ADD}/admin/addBanner`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

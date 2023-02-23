@@ -23,7 +23,7 @@ function SearchModal({
       }
     })
 
-    const { data } = await axios.post(`https://${import.meta.env.VITE_IP_ADD}`, {}, {
+    const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}`, {}, {
       withCredentials: true
     });
     if (data.status) {
@@ -33,11 +33,11 @@ function SearchModal({
 
   const getUsers = async () => {
     let id
-    await axios.post(`https://${import.meta.env.VITE_IP_ADD}/employee/getEmployeeDetails`, { email })
+    await axios.post(`${import.meta.env.VITE_IP_ADD}/employee/getEmployeeDetails`, { email })
     .then((data)=>{
       id = data.data._id
     })
-    const res = await axios.post(`https://${import.meta.env.VITE_IP_ADD}/employee/getSalarySlip`, {id});
+    const res = await axios.post(`${import.meta.env.VITE_IP_ADD}/employee/getSalarySlip`, {id});
     setSlips(res.data);
   }
 

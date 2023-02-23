@@ -19,7 +19,7 @@ const LoginAdminHR = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post(`https://${import.meta.env.VITE_IP_ADD}/login`, {
+            const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}/login`, {
                 ...values,
             }, {
                 withCredentials: true

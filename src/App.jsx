@@ -49,7 +49,7 @@ const App = () => {
     if (!cookies.jwt) {
       dispatch(setNotAuthenticated())
     } else {
-      const { data } = await axios.post(`https://${import.meta.env.VITE_IP_ADD}`, {}, {
+      const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}`, {}, {
         withCredentials: true
       });
       if (!data.status) {

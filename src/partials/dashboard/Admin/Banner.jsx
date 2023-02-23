@@ -6,7 +6,7 @@ const Banner = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const getBanner = async () => {
-        await axios.get(`https://${import.meta.env.VITE_IP_ADD}/admin/getBanner`)
+        await axios.get(`${import.meta.env.VITE_IP_ADD}/admin/getBanner`)
             .then((data) => {
                 setBanner(data.data)
             }).catch(err=>console.log(err))
@@ -38,7 +38,7 @@ const Banner = () => {
     return (
         <div className="relative w-full h-96 overflow-hidden bg-gray-900">
             <img
-                src={`https://${import.meta.env.VITE_IP_ADD}/admin/image?q=${images[currentImageIndex]?.image}`}
+                src={`${import.meta.env.VITE_IP_ADD}/admin/image?q=${images[currentImageIndex].image}`}
                 // alt={`Image ${currentImageIndex + 1}`}
                 className="absolute top-0 left-0 w-full h-full object-cover"
             />

@@ -6,7 +6,7 @@ function DashboardCard10() {
   const [users, setUsers] = useState([]);
   let currentDate = new Date();
   const getUsers = async () => {
-    const res = await axios.get(`https://${import.meta.env.VITE_IP_ADD}/hr/getUsers`);
+    const res = await axios.get(`${import.meta.env.VITE_IP_ADD}/hr/getUsers`);
     setUsers(res.data);
   }
 

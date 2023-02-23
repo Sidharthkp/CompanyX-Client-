@@ -11,7 +11,7 @@ function DashboardCard04() {
   const [employee, setEmployee] = useState([]);
 
   const getSlip = async () => {
-    const res = await axios.get(`https://${import.meta.env.VITE_IP_ADD}/admin/getSalaryDetails`);
+    const res = await axios.get(`${import.meta.env.VITE_IP_ADD}/admin/getSalaryDetails`);
     setBasic(res.data.basic)
     setInsurance(res.data.insurance)
     setCTC(res.data.CTC)
