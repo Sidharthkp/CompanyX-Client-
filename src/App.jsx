@@ -46,20 +46,20 @@ const App = () => {
   //   })
   // }
   const verifyUser = async () => {
-    if (!cookies.jwt) {
+    // if (!cookies.jwt) {
+    //   dispatch(setNotAuthenticated())
+    // } else {
+    const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}`, {}, {
+      withCredentials: true
+    });
+    if (!data.status) {
+      // removeCookie("jwt");
       dispatch(setNotAuthenticated())
     } else {
-      const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}`, {}, {
-        withCredentials: true
-      });
-      if (!data.status) {
-        // removeCookie("jwt");
-        dispatch(setNotAuthenticated())
-      } else {
-        setRole(data.role)
-        dispatch(setAuthentication())
-      }
+      setRole(data.role)
+      dispatch(setAuthentication())
     }
+    // }
   };
   useEffect(() => {
     // authStateCheck()
@@ -68,7 +68,7 @@ const App = () => {
     //   authStateListener()
     // } else {
     // }
-  }, [cookies, navigate, removeCookie ])
+  }, [cookies, navigate, removeCookie])
 
   return (
     <>
