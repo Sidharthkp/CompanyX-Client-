@@ -21,9 +21,7 @@ const LoginAdminHR = () => {
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}/login`, {
                 ...values,
-            }, {
-                withCredentials: true
-            });
+            })
 
             if (data) {
                 if (data.errors) {
@@ -146,12 +144,12 @@ const LoginAdminHR = () => {
                                 Log in
                             </button>
                         </div>
-                        <div className='flex flex-row'>
+                        {/* <div className='flex flex-row'>
                             <p className="font-medium text-indigo-600">
                                 Don't have an account?
                             </p>
                             <Link to="/register" className='ml-2 font-bold'>Sign up</Link>
-                        </div>
+                        </div> */}
                     </form>
                 </div>
                 <ToastContainer />

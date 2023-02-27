@@ -26,56 +26,66 @@ const App = () => {
   const [role, setRole] = useState("");
   const [secretGoogle, setSecretGoogle] = useState(false)
 
-  // const authStateCheck = () => {
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (!user || !user.emailVerified) {
-  //       setSecretGoogle(false)
-  //     } else {
-  //       setSecretGoogle(true)
-  //     }
-  //   })
-  // }
-  // const authStateListener = () => {
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (!user || !user.emailVerified) {
-  //       setSecretGoogle(false)
-  //       return dispatch(setNotAuthenticated())
-  //     }
-  //     setSecretGoogle(true)
-  //     return dispatch(setAuthentication())
-  //   })
-  // }
-  const verifyUser = async () => {
-    // if (!cookies.jwt) {
-    //   dispatch(setNotAuthenticated())
-    // } else {
-    const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}`, {}, {
-      withCredentials: true
-    });
-    if (!data.status) {
-      // removeCookie("jwt");
-      dispatch(setNotAuthenticated())
-    } else {
-      setRole(data.role)
-      dispatch(setAuthentication())
-    }
-    // }
-  };
-  useEffect(() => {
-    // authStateCheck()
-    verifyUser()
-    // if (secretGoogle) {
-    //   authStateListener()
-    // } else {
-    // }
-  }, [cookies, navigate, removeCookie])
+  if(localStorage.getItem("email")){
+    dispatch(setAuthentication())
+  } else {
+    dispatch(setNotAuthenticated())
+  }
+
+  // // const authStateCheck = () => {
+  // //   onAuthStateChanged(auth, (user) => {
+  // //     if (!user || !user.emailVerified) {
+  // //       setSecretGoogle(false)
+  // //     } else {
+  // //       setSecretGoogle(true)
+  // //     }
+  // //   })
+  // // }
+  // // const authStateListener = () => {
+  // //   onAuthStateChanged(auth, (user) => {
+  // //     if (!user || !user.emailVerified) {
+  // //       setSecretGoogle(false)
+  // //       return dispatch(setNotAuthenticated())
+  // //     }
+  // //     setSecretGoogle(true)
+  // //     return dispatch(setAuthentication())
+  // //   })
+  // // }
+  // const verifyUser = async () => {
+  //   // if (!cookies.jwt) {
+  //   //   dispatch(setNotAuthenticated())
+  //   // } else {
+  //   const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}`, {}, {
+  //     withCredentials: true
+  //   });
+  //   // if (!data.status) {
+  //     // removeCookie("jwt");
+  //     // dispatch(setNotAuthenticated())
+  //   // } else {
+  //     setRole(data.role)
+  //     dispatch(setAuthentication())
+  //   // }
+  //   // }
+  // };
+  // useEffect(() => {
+  //   // authStateCheck()
+  //   verifyUser()
+  //   // if (secretGoogle) {
+  //   //   authStateListener()
+  //   // } else {
+  //   // }
+  // }, [cookies, navigate, removeCookie])
+
+  useEffect(()=>{
+
+  }, [authenticated])
 
   return (
     <>
 
       <Routes>
         <Route exact path='/' element={!authenticated ? <Login /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
-        <Route exact path='/register' element={!authenticated ? <Register /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
+        {/* <Route exact path='/register' element={!authenticated ? <Register /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route> */}
         <Route exact path='/adminHome' element={<AdminHome />}></Route>
         <Route exact path='/adminhrlogin' element={!authenticated ? <LoginAdminHR /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
         <Route exact path='/hrHome' element={<HRHome />}></Route>
