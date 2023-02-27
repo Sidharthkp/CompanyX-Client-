@@ -31,9 +31,11 @@ const LoginAdminHR = () => {
                 } else if (data.errMessage) {
                     generateError(data.errMessage)
                 } else if (data.role === "admin") {
+                    localStorage.setItem("email", email)
                     dispatch(setAuthentication())
                     navigate("/adminHome")
                 } else if (data.role === "hr") {
+                    localStorage.setItem("email", email)
                     dispatch(setAuthentication())
                     navigate("/hrHome")
                 }
