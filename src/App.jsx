@@ -53,7 +53,7 @@ const App = () => {
         withCredentials: true
       });
       if (!data.status) {
-        removeCookie("jwt");
+        // removeCookie("jwt");
         dispatch(setNotAuthenticated())
       } else {
         setRole(data.role)
