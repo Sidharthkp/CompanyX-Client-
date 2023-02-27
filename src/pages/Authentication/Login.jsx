@@ -58,7 +58,7 @@ const Login = () => {
                 } else if (data.errMessage) {
                     generateError(data.errMessage)
                 } else {
-                    localStorage.setItem("email", email)
+                    localStorage.setItem("email", data.email)
                     dispatch(setAuthentication())
                     navigate("/employeeHome")
                 }
