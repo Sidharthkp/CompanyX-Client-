@@ -19,26 +19,26 @@ const Register = () => {
     })
 
     //google
-    const google = (e) => {
-        e.preventDefault()
-        signInWithPopup(auth, provider).then((data) => {
-            let chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            let passwordLength = 12;
-            let password = "";
-            for (let i = 0; i <= passwordLength; i++) {
-                let randomNumber = Math.floor(Math.random() * chars.length);
-                password += chars.substring(randomNumber, randomNumber + 1);
-            }
-            axios.post("https://companyx.cyclic.app/register", { email: data.user.email, password: password })
-                .then((res) => console.log(res)
-                )
-                .catch((err) => console.log(err));
-            dispatch(setAuthentication())
-            navigate("/");
-        }).catch((error) => {
-            console.log(error.message);
-        })
-    }
+    // const google = (e) => {
+    //     e.preventDefault()
+    //     signInWithPopup(auth, provider).then((data) => {
+    //         let chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    //         let passwordLength = 12;
+    //         let password = "";
+    //         for (let i = 0; i <= passwordLength; i++) {
+    //             let randomNumber = Math.floor(Math.random() * chars.length);
+    //             password += chars.substring(randomNumber, randomNumber + 1);
+    //         }
+    //         axios.post("https://companyx.cyclic.app/register", { email: data.user.email, password: password })
+    //             .then((res) => console.log(res)
+    //             )
+    //             .catch((err) => console.log(err));
+    //         dispatch(setAuthentication())
+    //         navigate("/");
+    //     }).catch((error) => {
+    //         console.log(error.message);
+    //     })
+    // }
 
     const togglePassword = () => {
         if (passwordType === 'password') {
@@ -165,7 +165,7 @@ const Register = () => {
                             <Link to="/adminhrlogin" className='ml-2 font-bold'>Go to HR/Admin Login</Link>
                         </div>
                     </form>
-                    <div className='flex justify-center my-2'>
+                    {/* <div className='flex justify-center my-2'>
                         <button onClick={(e) => google(e)}
                             className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                         >
@@ -192,8 +192,8 @@ const Register = () => {
                                 />
                             </svg>
                             Google
-                        </button>
-                    </div>
+                        </button> */}
+                    {/* </div> */}
                 </div>
                 <ToastContainer />
             </div>

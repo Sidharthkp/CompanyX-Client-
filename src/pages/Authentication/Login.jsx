@@ -19,21 +19,21 @@ const Login = () => {
     })
 
     //google
-    const google = (e) => {
-        e.preventDefault()
-        signInWithPopup(auth, provider).then(async (data) => {
-            const { value } = await axios.post(`${import.meta.env.VITE_IP_ADD}/google`, { email: data.user.email})
-            if (value) {
-                console.log(value);
-                if (value.errMessage) {
-                    generateError(value.errMessage)
-                } else {
-                    dispatch(setAuthentication())
-                    navigate("/employeeHome");
-                }
-            }
-        })
-    }
+    // const google = (e) => {
+    //     e.preventDefault()
+    //     signInWithPopup(auth, provider).then(async (data) => {
+    //         const { value } = await axios.post(`${import.meta.env.VITE_IP_ADD}/google`, { email: data.user.email})
+    //         if (value) {
+    //             console.log(value);
+    //             if (value.errMessage) {
+    //                 generateError(value.errMessage)
+    //             } else {
+    //                 dispatch(setAuthentication())
+    //                 navigate("/employeeHome");
+    //             }
+    //         }
+    //     })
+    // }
 
     const togglePassword = () => {
         if (passwordType === 'password') {
@@ -162,7 +162,7 @@ const Login = () => {
                             <Link to="/adminhrlogin" className='ml-2 font-bold'>Go to Employee Login</Link>
                         </div>
                     </form>
-                    <div className='flex justify-center my-2'>
+                    {/* <div className='flex justify-center my-2'>
                         <button onClick={(e) => google(e)}
                             className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                         >
@@ -190,7 +190,7 @@ const Login = () => {
                             </svg>
                             Google
                         </button>
-                    </div>
+                    </div> */}
                 </div>
                 <ToastContainer />
             </div >

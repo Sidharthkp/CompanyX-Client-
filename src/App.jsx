@@ -26,25 +26,25 @@ const App = () => {
   const [role, setRole] = useState("");
   const [secretGoogle, setSecretGoogle] = useState(false)
 
-  const authStateCheck = () => {
-    onAuthStateChanged(auth, (user) => {
-      if (!user || !user.emailVerified) {
-        setSecretGoogle(false)
-      } else {
-        setSecretGoogle(true)
-      }
-    })
-  }
-  const authStateListener = () => {
-    onAuthStateChanged(auth, (user) => {
-      if (!user || !user.emailVerified) {
-        setSecretGoogle(false)
-        return dispatch(setNotAuthenticated())
-      }
-      setSecretGoogle(true)
-      return dispatch(setAuthentication())
-    })
-  }
+  // const authStateCheck = () => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (!user || !user.emailVerified) {
+  //       setSecretGoogle(false)
+  //     } else {
+  //       setSecretGoogle(true)
+  //     }
+  //   })
+  // }
+  // const authStateListener = () => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (!user || !user.emailVerified) {
+  //       setSecretGoogle(false)
+  //       return dispatch(setNotAuthenticated())
+  //     }
+  //     setSecretGoogle(true)
+  //     return dispatch(setAuthentication())
+  //   })
+  // }
   const verifyUser = async () => {
     if (!cookies.jwt) {
       dispatch(setNotAuthenticated())
@@ -62,13 +62,13 @@ const App = () => {
     }
   };
   useEffect(() => {
-    authStateCheck()
-    if (secretGoogle) {
-      authStateListener()
-    } else {
-      verifyUser()
-    }
-  }, [cookies, navigate, removeCookie, secretGoogle])
+    // authStateCheck()
+    verifyUser()
+    // if (secretGoogle) {
+    //   authStateListener()
+    // } else {
+    // }
+  }, [cookies, navigate, removeCookie ])
 
   return (
     <>
