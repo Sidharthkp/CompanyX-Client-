@@ -38,7 +38,7 @@ const Banner = () => {
     return (
         <div className="relative w-full h-96 overflow-hidden bg-gray-900">
             <img
-                src={`${import.meta.env.VITE_IP_ADD}/admin/image?q=${images[currentImageIndex].image}`}
+                src={`${import.meta.env.VITE_IP_ADD}/admin/image?q=${images[currentImageIndex]?.image}`}
                 // alt={`Image ${currentImageIndex + 1}`}
                 className="absolute top-0 left-0 w-full h-full object-cover"
             />
