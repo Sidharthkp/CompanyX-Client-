@@ -25,13 +25,16 @@ const App = () => {
   const [cookies, removeCookie] = useCookies([]);
   const [role, setRole] = useState("");
   const [secretGoogle, setSecretGoogle] = useState(false)
-  if(localStorage.getItem("email")){
-    let email = localStorage.getItem("email")
-    const { data } = axios.post(`${import.meta.env.VITE_IP_ADD}`, {email})
-    setRole(data.role)
-    dispatch(setAuthentication())
-  } else {
-    dispatch(setNotAuthenticated())
+  const authent = async () => {
+    if (localStorage.getItem("email")) {
+      let email = localStorage.getItem("email")
+      const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}`, { email })
+      console.log(data);
+      setRole(data.role)
+      dispatch(setAuthentication())
+    } else {
+      dispatch(setNotAuthenticated())
+    }
   }
 
   // // const authStateCheck = () => {
@@ -78,8 +81,8 @@ const App = () => {
   //   // }
   // }, [cookies, navigate, removeCookie])
 
-  useEffect(()=>{
-
+  useEffect(() => {
+    authent()
   }, [authenticated])
 
   return (

@@ -24,6 +24,7 @@ const LoginAdminHR = () => {
             })
 
             if (data) {
+                console.log(data);
                 if (data.errors) {
                     const { email, password } = data.errors;
                     if (email) generateError(email);
