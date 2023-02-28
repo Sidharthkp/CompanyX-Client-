@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaWindowClose } from 'react-icons/fa';
 import axios from "axios";
 import { setBannerDeleteClose } from "../../../redux/reducer/BannerDelete";
+import { booleanSwitch } from "../../../redux/reducer/boolean";
 
 const BannerDeleteModal = () => {
     const [images, setBanner] = useState([])
@@ -29,6 +30,7 @@ const BannerDeleteModal = () => {
         axios
             .post(`${import.meta.env.VITE_IP_ADD}/admin/deleteBanner`, { id })
             .then((res) => {
+                dispatch(booleanSwitch())
                 dispatch(setBannerDeleteClose())
             }
             )

@@ -1,9 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Banner = () => {
     const [images, setBanner] = useState([])
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+
+    const boolean = useSelector((state) => state.changeBoolean.boolean);
 
     const getBanner = async () => {
         await axios.get(`${import.meta.env.VITE_IP_ADD}/admin/getBanner`)
@@ -13,7 +17,7 @@ const Banner = () => {
     }
     useEffect(() => {
         getBanner()
-    }, [])
+    }, [boolean])
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCurrentImageIndex(

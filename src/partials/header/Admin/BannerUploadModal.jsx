@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setBannerClose } from "../../../redux/reducer/AddBanner";
 import { FaWindowClose } from 'react-icons/fa';
 import axios from "axios";
+import { booleanSwitch } from "../../../redux/reducer/boolean";
 
 const BannerUploadModal = () => {
     const [image, setImage] = useState(null)
@@ -33,6 +34,7 @@ const BannerUploadModal = () => {
                 }
             })
             .then((res) => {
+                dispatch(booleanSwitch())
                 dispatch(setBannerClose())
             }
             )
