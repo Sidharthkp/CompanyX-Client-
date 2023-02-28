@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import DashboardCard04 from '../../partials/dashboard/DashboardCard04';
+import Piechart from '../../partials/dashboard/pieChart';
 import DashboardCard10 from '../../partials/dashboard/HR/DashboardCardhr';
 import AdminHeader from '../../partials/header/Admin/AdminHeader';
 import WelcomeBannerAdmin from '../../partials/dashboard/WelcomeBannerAdmin';
@@ -31,6 +32,7 @@ const AdminHome = () => {
                         <div className="grid grid-cols-12 gap-6">
                             {/* Bar chart (Direct vs Indirect) */}
                             <DashboardCard04 />
+                            <Piechart />
                             {/* Card (Customers) */}
                             <DashboardCard10 />
                         </div>

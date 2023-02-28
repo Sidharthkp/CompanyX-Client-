@@ -29,7 +29,7 @@ const App = () => {
     if (localStorage.getItem("email")) {
       let email = localStorage.getItem("email")
       const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}`, { email })
-      console.log(data);
+      // console.log(data);
       if (data.role) {
         setRole(data.role)
       } else {
