@@ -1,11 +1,9 @@
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Login from './pages/Authentication/Login'
-import Register from './pages/Authentication/Register'
 import AdminHome from './pages/Admin/AdminHome'
 import 'react-toastify/dist/ReactToastify.css';
 import './css/style.css';
 import { useEffect, useState } from 'react';
-import LoginAdminHR from './pages/Authentication/AdminHRLogin';
 import HRHome from './pages/HR/HRHome';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
@@ -13,8 +11,8 @@ import { setAuthentication, setNotAuthenticated } from './redux/reducer/Authenti
 import axios from 'axios';
 import Error from './pages/Error';
 import EmployeeHome from './pages/Employees/EmployeeHome';
-import { auth } from './firebase/Config'
-import { onAuthStateChanged } from 'firebase/auth';
+// import { auth } from './firebase/Config'
+// import { onAuthStateChanged } from 'firebase/auth';
 import EmployeeDetails from './pages/HR/EmployeeDetails';
 import SlipDetails from './pages/Employees/slipDetails';
 
@@ -97,7 +95,7 @@ const App = () => {
         <Route exact path='/' element={!authenticated ? <Login /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
         {/* <Route exact path='/register' element={!authenticated ? <Register /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route> */}
         <Route exact path='/adminHome' element={<AdminHome />}></Route>
-        <Route exact path='/adminhrlogin' element={!authenticated ? <LoginAdminHR /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route>
+        {/* <Route exact path='/adminhrlogin' element={!authenticated ? <LoginAdminHR /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route> */}
         <Route exact path='/hrHome' element={<HRHome />}></Route>
         <Route exact path='/employeeDetails' element={<EmployeeDetails />}></Route>
         <Route exact path='/employeeHome' element={<EmployeeHome />}></Route>

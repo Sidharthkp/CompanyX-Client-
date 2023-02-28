@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify'
 import { setAuthentication } from '../../redux/reducer/Authentication';
-import { auth, provider } from '../../firebase/Config';
-import { signInWithPopup } from 'firebase/auth';
+// import { auth, provider } from '../../firebase/Config';
+// import { signInWithPopup } from 'firebase/auth';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -154,12 +154,12 @@ const Login = () => {
                             </p>
                             <Link to="/register" className='ml-2 font-bold'>Sign up</Link>
                         </div> */}
-                        <div className='flex flex-row'>
+                        {/* <div className='flex flex-row'>
                             <p className="font-medium text-indigo-600">
                                 Employee login ?
                             </p>
                             <Link to="/adminhrlogin" className='ml-2 font-bold'>Go to Employee Login</Link>
-                        </div>
+                        </div> */}
                     </form>
                     {/* <div className='flex justify-center my-2'>
                         <button onClick={(e) => google(e)}
