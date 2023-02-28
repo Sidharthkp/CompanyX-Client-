@@ -15,6 +15,8 @@ import EmployeeHome from './pages/Employees/EmployeeHome';
 // import { onAuthStateChanged } from 'firebase/auth';
 import EmployeeDetails from './pages/HR/EmployeeDetails';
 import SlipDetails from './pages/Employees/slipDetails';
+import DashboardCardEmployeeDetails from './partials/dashboard/HR/Userpayslips';
+import SlipDetailsHR from './partials/dashboard/HR/slipDetailsHR';
 
 const App = () => {
   const navigate = useNavigate()
@@ -98,8 +100,10 @@ const App = () => {
         {/* <Route exact path='/adminhrlogin' element={!authenticated ? <LoginAdminHR /> : role === "admin" ? <AdminHome /> : role === "hr" ? <HRHome /> : <EmployeeHome />}></Route> */}
         <Route exact path='/hrHome' element={<HRHome />}></Route>
         <Route exact path='/employeeDetails' element={<EmployeeDetails />}></Route>
+        <Route exact path='/paySlip' element={<DashboardCardEmployeeDetails />}></Route>
         <Route exact path='/employeeHome' element={<EmployeeHome />}></Route>
         <Route exact path='/slipDetails' element={<SlipDetails />}></Route>
+        <Route exact path='/slipDetailsHR' element={<SlipDetailsHR />}></Route>
         <Route exact path='*' element={<Error />}></Route>
       </Routes>
 
