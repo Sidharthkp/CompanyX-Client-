@@ -27,6 +27,24 @@ To install and run this project, follow these steps:
 4. Create a `.env` file in your root folder and create the key value pair for connection to the server eg: `VITE_IP_ADD: http://localhost:4111`
 5. Run the project: `npm run dev`
 
+## Credentials
+
+Admin: 
+email: admin@gmail.com
+password: 123456
+
+HR:
+email: hr@gmail.com
+password: 123456
+
+Employee:
+1. email: hai@gmail.com
+   password: 123456
+2. email: ironman@gmail.com
+   password: 123456
+3. email: wonder@gmail.com
+   password: 123456
+
 ## Contact
 
 If you have any questions or comments about this project, please email me at sidharthkannan20@gmail.com.
