@@ -32,8 +32,8 @@ function DashboardCard04() {
       },
       {
         label: "CTC",
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgb(0, 255, 0)",
+        borderColor: "rgb(0, 255, 0)",
         data: CTC,
       },
     ],
