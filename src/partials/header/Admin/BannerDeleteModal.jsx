@@ -30,6 +30,7 @@ const BannerDeleteModal = () => {
         axios
             .post(`${import.meta.env.VITE_IP_ADD}/admin/deleteBanner`, { id })
             .then((res) => {
+                setdelete(false)
                 dispatch(booleanSwitch())
                 dispatch(setBannerDeleteClose())
             }
