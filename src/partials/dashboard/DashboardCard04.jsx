@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
+import Barchart from './barChart';
 
 function DashboardCard04() {
   const [basic, setBasic] = useState([]);
@@ -50,6 +51,7 @@ function DashboardCard04() {
       </header>
 
       <Line data={data} width={595} height={248} />
+      <Barchart />
 
     </div>
   );

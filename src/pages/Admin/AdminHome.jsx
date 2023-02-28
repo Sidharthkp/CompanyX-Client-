@@ -5,6 +5,7 @@ import DashboardCard10 from '../../partials/dashboard/HR/DashboardCardhr';
 import AdminHeader from '../../partials/header/Admin/AdminHeader';
 import WelcomeBannerAdmin from '../../partials/dashboard/WelcomeBannerAdmin';
 import Banner from '../../partials/dashboard/Admin/Banner';
+import Barchart from '../../partials/dashboard/barChart';
 
 
 const AdminHome = () => {
@@ -33,6 +34,7 @@ const AdminHome = () => {
                             {/* Bar chart (Direct vs Indirect) */}
                             <DashboardCard04 />
                             <Piechart />
+                            {/* <Barchart /> */}
                             {/* Card (Customers) */}
                             <DashboardCard10 />
                         </div>
