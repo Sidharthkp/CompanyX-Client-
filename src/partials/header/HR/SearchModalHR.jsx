@@ -47,9 +47,12 @@ function SearchModal({
       let difference = newDate.getTime() - currentDate.getTime();
       let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
       if (TotalDays > 25) {
-        boolean = true
+        boolean =  true
       }
     })
+    if(salary.length === 0){
+      boolean = true
+    }
     return boolean
   }
 
