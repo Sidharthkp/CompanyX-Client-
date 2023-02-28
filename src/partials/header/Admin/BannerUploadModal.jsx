@@ -67,7 +67,8 @@ const BannerUploadModal = () => {
                                                 {image ?
                                                     <img src={image ? URL.createObjectURL(image) : ''} width="200px" height="200px" alt='' /> : null
                                                 }
-                                                <input ref={fileInput} name="postImage" onChange={(e) => setImage(e.target.files[0])} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="user_avatar" type="file" />
+                                                <input ref={fileInput} name="postImage" onChange={(e) => setImage(e.target.files[0])} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="user_avatar" type="file" accept="image/png, image/jpeg" />
+                                                <label className="block mb-2 text-sm font-medium text-red-600 ">*Only jpeg and png images are supported</label>
                                             </div>
                                         </div>
                                         <div className="flex flex-row justify-center my-4">
