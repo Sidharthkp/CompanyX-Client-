@@ -13,17 +13,8 @@ const SlipDetails = () => {
     const [email, setEmail] = useState("");
 
     const authentication = async () => {
-        onAuthStateChanged(auth, (user) => {
-            if (user || user.emailVerified) {
-                setEmail(user.email)
-            }
-        })
-        const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}`, {}, {
-            withCredentials: true
-        });
-        if (data.status) {
-            setEmail(data.email)
-        }
+        let email = localStorage.getItem("email")
+        setEmail(email)
     }
 
     const getSlip = async () => {

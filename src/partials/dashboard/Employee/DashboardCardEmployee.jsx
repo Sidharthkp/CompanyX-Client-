@@ -10,18 +10,8 @@ function DashboardCardEmployee() {
   const [email, setEmail] = useState("");
 
   const authentication = async () => {
-    onAuthStateChanged(auth, (user) => {
-      if (user || user.emailVerified) {
-        setEmail(user.email)
-      }
-    })
-
-    const { data } = await axios.post(`${import.meta.env.VITE_IP_ADD}`, {}, {
-      withCredentials: true
-    });
-    if (data.status) {
-      setEmail(data.email)
-    }
+    let email = localStorage.getItem("email")
+    setEmail(email)
   }
 
   const getUsers = async () => {
@@ -83,9 +73,9 @@ function DashboardCardEmployee() {
                       </td>
                       <td className="p-2 whitespace-nowrap flex flex-row justify-center">
                         <Link to={{
-                            pathname: "/slipDetails",
-                            search: `?q=${slips._id}`
-                          }}>
+                          pathname: "/slipDetails",
+                          search: `?q=${slips._id}`
+                        }}>
                           <button className="bg-green-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150" type="button">
                             Details
                           </button>
