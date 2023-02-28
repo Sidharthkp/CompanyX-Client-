@@ -28,11 +28,11 @@ const SlipDetails = () => {
 
     const getSlip = async () => {
         let id
-        await axios.post("https://companyx.cyclic.app/employee/getEmployeeDetails", { email })
+        await axios.post(`${import.meta.env.VITE_IP_ADD}/employee/getEmployeeDetails`, { email })
             .then((data) => {
                 id = data.data._id
             })
-        const res = await axios.post('https://companyx.cyclic.app/employee/getSalarySlip', { id });
+        const res = await axios.post(`${import.meta.env.VITE_IP_ADD}/employee/getSalarySlip`, { id });
         res.data.map(d => {
             d._id === slip_id ? setSlips(d) : null
         })
