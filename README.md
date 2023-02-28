@@ -13,7 +13,7 @@ This project mainly concentrates on the three modules which is included - (Admin
 1. HR is the one who generates salary slips to employees.
 2. HR can view all salaries provided to each employees.
 
-##Employee
+## Employee
 1. Employee can view and export the data (salary slip).
 2. All the salary slips can be accessed by just searching the date of salary issued in the search bar.
 
@@ -24,7 +24,8 @@ To install and run this project, follow these steps:
 1. Clone this repository: `git clone https://github.com/Sidharthkp/CompanyX-Client-.git`
 2. Navigate to the project directory: `cd CompanyX-Client-`
 3. Install the dependencies: `npm install`
-4. Run the project: `npm run dev`
+4. Create a `.env` file in your root folder and create the key value pair for connection to the server eg: `VITE_IP_ADD: http://localhost:4111`
+5. Run the project: `npm run dev`
 
 ## Contact
 
