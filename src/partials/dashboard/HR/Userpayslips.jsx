@@ -74,6 +74,9 @@ function DashboardCardEmployeeDetails() {
                                     <div className="font-semibold text-center">CTC</div>
                                 </th>
                                 <th className="p-2 whitespace-nowrap">
+                                    <div className="font-semibold text-center">Edit</div>
+                                </th>
+                                <th className="p-2 whitespace-nowrap">
                                     <div className="font-semibold text-center">Action</div>
                                 </th>
                             </tr>
@@ -93,9 +96,21 @@ function DashboardCardEmployeeDetails() {
                                             <td className="p-2 whitespace-nowrap">
                                                 <div className="text-center">{slips.CTC}</div>
                                             </td>
-                                            <td className="p-2 whitespace-nowrap flex flex-row justify-center">
+                                            <td className="p-2 whitespace-nowrap text-center">
                                                 <Link to={{
-                                                    pathname: "/slipDetailsHR",
+                                                    pathname: "/slipDetailsHREdit",
+                                                    search: `?q=${slips._id}`
+                                                }}
+                                                    state={{ id: userID }}
+                                                >
+                                                    <button className="bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150" type="button">
+                                                        Edit
+                                                    </button>
+                                                </Link>
+                                            </td>
+                                            <td className="p-2 whitespace-nowrap flex justify-center">
+                                                <Link to={{
+                                                    pathname: "/slipEdit",
                                                     search: `?q=${slips._id}`
                                                 }}
                                                     state={{ id: userID }}

@@ -17,6 +17,7 @@ import EmployeeDetails from './pages/HR/EmployeeDetails';
 import SlipDetails from './pages/Employees/slipDetails';
 import DashboardCardEmployeeDetails from './partials/dashboard/HR/Userpayslips';
 import SlipDetailsHR from './partials/dashboard/HR/slipDetailsHR';
+import SlipDetailsHREdit from './partials/dashboard/HR/EditSlipHR';
 
 const App = () => {
   const navigate = useNavigate()
@@ -104,6 +105,8 @@ const App = () => {
         <Route exact path='/employeeHome' element={<EmployeeHome />}></Route>
         <Route exact path='/slipDetails' element={<SlipDetails />}></Route>
         <Route exact path='/slipDetailsHR' element={<SlipDetailsHR />}></Route>
+        <Route exact path='/slipDetailsHREdit' element={<SlipDetailsHREdit />}></Route>
+        <Route exact path='' element={<SlipDetailsHR />}></Route>
         <Route exact path='*' element={<Error />}></Route>
       </Routes>
 
